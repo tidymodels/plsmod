@@ -5,6 +5,7 @@
 \alias{reexports}
 \alias{tidy}
 \alias{\%>\%}
+\alias{translate}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -15,5 +16,7 @@ below to see their documentation.
   \item{generics}{\code{\link[generics]{tidy}}}
 
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}}
+
+  \item{parsnip}{\code{\link[parsnip]{translate}}}
 }}
 

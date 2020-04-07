@@ -2,7 +2,7 @@
 #' @importFrom purrr map_lgl
 #' @importFrom tibble is_tibble as_tibble
 #' @importFrom parsnip set_new_model
-#' @importFrom stats predict
+#' @importFrom stats predict loadings
 #' @importFrom mixOmics spls
 
 # ------------------------------------------------------------------------------
@@ -14,6 +14,17 @@ generics::tidy
 #' @importFrom magrittr %>%
 #' @export
 magrittr::`%>%`
+
+#' @importFrom parsnip translate
+#' @export
+parsnip::translate
+
+# ------------------------------------------------------------------------------
+
+#' @importFrom utils globalVariables
+utils::globalVariables(
+  c("component", "loadings", "term", "type", "value")
+)
 
 # ------------------------------------------------------------------------------
 

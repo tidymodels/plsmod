@@ -23,6 +23,10 @@ Imports:
     dplyr,
     tidyr,
     generics,
-    magrittr
+    magrittr,
+    purrr,
+    rlang
 Suggests: 
-    modeldata
+    modeldata,
+    testthat,
+    covr

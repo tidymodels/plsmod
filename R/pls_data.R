@@ -1,3 +1,4 @@
+# nocov
 make_pls_mixOmics <- function() {
   parsnip::set_new_model("pls")
 
@@ -137,3 +138,5 @@ make_pls_mixOmics <- function() {
     )
   )
 }
+
+# nocov end
