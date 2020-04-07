@@ -15,10 +15,6 @@ generics::tidy
 #' @export
 magrittr::`%>%`
 
-#' @importFrom parsnip translate
-#' @export
-parsnip::translate
-
 # ------------------------------------------------------------------------------
 
 #' @importFrom utils globalVariables
