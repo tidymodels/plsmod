@@ -1,0 +1,26 @@
+Package: projections
+Title: Model Wrappers for Projection Methods
+Version: 0.0.0.9000
+Authors@R: 
+    c(person(given = "Max",
+             family = "Kuhn",
+             role = c("aut", "cre"),
+             email = "max@rstudio.com"),
+      person(given = "RStudio",
+             role = "cph"))
+Description: Bindings for additional regression models for use
+    with the 'parsnip' package.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.0.9000
+Depends: 
+    parsnip (>= 0.1.0)
+Imports: 
+    tibble,
+    mixOmics,
+    dplyr,
+    tidyr
+Suggests: 
+    modeldata
