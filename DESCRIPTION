@@ -16,7 +16,7 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0.9000
 Depends: 
-    parsnip (>= 0.1.0)
+    parsnip
 Imports: 
     tibble,
     mixOmics,
