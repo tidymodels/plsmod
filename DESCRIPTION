@@ -21,6 +21,8 @@ Imports:
     tibble,
     mixOmics,
     dplyr,
-    tidyr
+    tidyr,
+    generics,
+    magrittr
 Suggests: 
     modeldata
