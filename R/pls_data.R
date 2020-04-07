@@ -58,7 +58,7 @@ make_pls_mixOmics <- function() {
     type = "numeric",
     value = list(
       pre = NULL,
-      post = maybe_pls_multivariate,
+      post = single_numeric_preds,
       func = c(fun = "predict"),
       args =
         list(
@@ -92,10 +92,7 @@ make_pls_mixOmics <- function() {
     type = "class",
     value = list(
       pre = NULL,
-      post = function(x, object) {
-        x <- ifelse(x[, 1] >= 0.5, object$lvl[2], object$lvl[1])
-        x
-      },
+      post = single_class_preds,
       func = c(fun = "predict"),
       args =
         list(
@@ -113,12 +110,7 @@ make_pls_mixOmics <- function() {
     type = "prob",
     value = list(
       pre = NULL,
-      post = function(x, object) {
-        x <- x[, 1]
-        x <- tibble(v1 = 1 - x, v2 = x)
-        colnames(x) <- object$lvl
-        x
-      },
+      post = single_prob_preds,
       func = c(fun = "predict"),
       args =
         list(

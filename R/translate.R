@@ -4,6 +4,7 @@ translate.pls <- function(x, engine = x$engine, ...) {
   x <- parsnip::translate.default(x, engine, ...)
   x <- is_da(x)
   x <- is_sparse(x)
+
   x
 }
 
@@ -20,5 +21,9 @@ is_sparse <- function(x) {
       all(rlang::expr_text(x$args$num_terms) == "~NULL")) {
     x$method$fit$func["fun"] <- gsub("^s", "", x$method$fit$func["fun"])
   }
+  x
+}
+
+expand_keepx <- function(x) {
   x
 }
