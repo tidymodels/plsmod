@@ -37,7 +37,7 @@ test_that('Multivariate model fitting', {
   mo_pls_da_pred <- as_tibble(mo_pls_da_pred)
   names(mo_pls_da_pred) <- paste0(".pred_", names(mo_pls_da_pred))
 
-  expect_equal(parsnip_pls_multi_num, mo_pls_da_pred)
+  expect_equivalent(parsnip_pls_multi_num, mo_pls_da_pred)
 })
 
 # ------------------------------------------------------------------------------
@@ -63,6 +63,6 @@ test_that('Univariate model fitting', {
   mo_pls_da_pred <- as_tibble(mo_pls_da_pred)
   names(mo_pls_da_pred) <- ".pred"
 
-  expect_equal(parsnip_pls_uni_num, mo_pls_da_pred)
+  expect_equivalent(parsnip_pls_uni_num, mo_pls_da_pred)
 })
 
