@@ -19,8 +19,9 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0.9000
+BiocViews:
 Depends: 
-    parsnip
+    parsnip (>= 0.1.0)
 Imports: 
     tibble,
     mixOmics,
@@ -35,4 +36,4 @@ Suggests:
     testthat,
     covr
 Remotes:
-    bioc::release/mixOmics
+    tidymodels/parsnip@0-1-0-rc
