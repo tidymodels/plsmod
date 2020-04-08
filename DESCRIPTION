@@ -36,4 +36,5 @@ Suggests:
     testthat,
     covr
 Remotes:
-    tidymodels/parsnip@0-1-0-rc
+    tidymodels/parsnip@0-1-0-rc,
+    bioc::release/mixOmics
