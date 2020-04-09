@@ -9,12 +9,17 @@ Authors@R:
       person(given = "RStudio",
              role = "cph"))
 Description: Bindings for additional regression models for use
-    with the 'parsnip' package.
+    with the 'parsnip' package, including ordinary and spare parial least 
+    squares models for regression and classification (Rohart et al (2017) 
+    <doi:10.1371/journal.pcbi.1005752>).
+URL: https://topepo.github.io/projections, https://github.com/topepo/projections
+BugReports: https://github.com/topepo/projections/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0.9000
+biocViews: mixOmics
 Depends: 
     parsnip (>= 0.1.0)
 Imports: 
@@ -30,3 +35,6 @@ Suggests:
     modeldata,
     testthat,
     covr
+Remotes:
+    tidymodels/parsnip@0-1-0-rc
+    

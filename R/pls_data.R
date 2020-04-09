@@ -9,14 +9,14 @@ make_pls_mixOmics <- function() {
 
   parsnip::set_model_engine("pls", "classification", "mixOmics")
   parsnip::set_model_engine("pls", "regression",     "mixOmics")
-  parsnip::set_dependency("pls", "mixOmics",       "mixOmics")
+  parsnip::set_dependency("pls",   "mixOmics",       "mixOmics")
 
   parsnip::set_model_arg(
     model = "pls",
     eng = "mixOmics",
     parsnip = "num_terms",
     original = "keepX",
-    func = list(pkg = "dials", fun = "num_terms", range = c(2, 5)),
+    func = list(pkg = "dials", fun = "num_terms", range = c(1, 4)),
     has_submodel = TRUE
   )
   parsnip::set_model_arg(
@@ -24,7 +24,7 @@ make_pls_mixOmics <- function() {
     eng = "mixOmics",
     parsnip = "num_comp",
     original = "ncomp",
-    func = list(pkg = "dials", fun = "num_comp"),
+    func = list(pkg = "dials", fun = "num_comp", range = c(1, 4)),
     has_submodel = FALSE
   )
 
@@ -33,9 +33,9 @@ make_pls_mixOmics <- function() {
     eng = "mixOmics",
     mode = "regression",
     value = list(
-      interface = "data.frame",
-      protect = c("X", "Y"),
-      func = c(pkg = "mixOmics", fun = "spls"),
+      interface = "matrix",
+      protect = c("x", "y"),
+      func = c(pkg = "projections", fun = "pls_fit"),
       defaults = list(mode = "regression")
     )
   )
@@ -45,9 +45,9 @@ make_pls_mixOmics <- function() {
     eng = "mixOmics",
     mode = "classification",
     value = list(
-      interface = "data.frame",
-      protect = c("X", "Y"),
-      func = c(pkg = "mixOmics", fun = "spls"),
+      interface = "matrix",
+      protect = c("x", "y"),
+      func = c(pkg = "projections", fun = "pls_fit"),
       defaults = list(mode = "regression")
     )
   )

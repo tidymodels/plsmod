@@ -3,3 +3,10 @@
 ^LICENSE\.md$
 ^codecov\.yml$
 ^README\.Rmd$
+^CODE_OF_CONDUCT\.md$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$
+^\.covrignore$
+^depends\.Rds$
