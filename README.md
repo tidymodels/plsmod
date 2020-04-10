@@ -3,8 +3,10 @@
 # projections
 
 <!-- badges: start -->
-[![Codecov test coverage](https://codecov.io/gh/topepo/projections/branch/master/graph/badge.svg)](https://codecov.io/gh/topepo/projections?branch=master)
-[![R build status](https://github.com/topepo/projections/workflows/R-CMD-check/badge.svg)](https://github.com/topepo/projections/actions)
+[![R build status](https://github.com/tidymodels/projections/workflows/R-CMD-check/badge.svg)](https://github.com/tidymodels/projections/actions)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![CRAN status](https://www.r-pkg.org/badges/version/projections)](https://CRAN.R-project.org/package=projections)
+[![Codecov test coverage](https://codecov.io/gh/tidymodels/projections/branch/master/graph/badge.svg)](https://codecov.io/gh/tidymodels/projections?branch=master)
 <!-- badges: end -->
 
 This package is a help package for [parsnip](https://tidymodels.github.io/parsnip/) that enables linear projection models (such as partial least squares, PLS) in the tidymodels infrastructure. 
@@ -22,7 +24,7 @@ And the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("topepo/projections")
+devtools::install_github("tidymodels/projections")
 ```
 
 ## Code of Conduct
