@@ -93,7 +93,7 @@ test_that('classification model fitting', {
   )
 
   mo_spls_pred_9 <- predict(mo_spls_da, new_x)$predict[9,,2:3]
-  mo_spls_pred_9 <- t(apply(mo_spls_pred_9, 2, projections:::smax))
+  mo_spls_pred_9 <- t(apply(mo_spls_pred_9, 2, plsmod:::smax))
   mo_spls_pred_9 <- as.data.frame(mo_spls_pred_9)
   mo_spls_pred_9 <-
     tibble(num_com = 2:3,

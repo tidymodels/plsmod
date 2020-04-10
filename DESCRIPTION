@@ -1,4 +1,4 @@
-Package: projections
+Package: plsmod
 Title: Model Wrappers for Projection Methods
 Version: 0.0.1
 Authors@R: 
@@ -13,8 +13,8 @@ Description: Bindings for additional regression models for use
     with the 'parsnip' package, including ordinary and spare partial least 
     squares models for regression and classification (Rohart et al (2017) 
     <doi:10.1371/journal.pcbi.1005752>).
-URL: https://tidymodels.github.io/projections, https://github.com/tidymodels/projections
-BugReports: https://github.com/tidymodels/projections/issues
+URL: https://github.com/tidymodels/plsmod
+BugReports: https://github.com/tidymodels/plsmod/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
