@@ -5,6 +5,7 @@ Authors@R:
     c(person(given = "Max",
              family = "Kuhn",
              role = c("aut", "cre"),
+             comment = c(ORCID = "0000-0003-2402-136X"),
              email = "max@rstudio.com"),
       person(given = "RStudio",
              role = "cph"))
@@ -12,8 +13,8 @@ Description: Bindings for additional regression models for use
     with the 'parsnip' package, including ordinary and spare partial least 
     squares models for regression and classification (Rohart et al (2017) 
     <doi:10.1371/journal.pcbi.1005752>).
-URL: https://topepo.github.io/projections, https://github.com/topepo/projections
-BugReports: https://github.com/topepo/projections/issues
+URL: https://tidymodels.github.io/projections, https://github.com/tidymodels/projections
+BugReports: https://github.com/tidymodels/projections/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

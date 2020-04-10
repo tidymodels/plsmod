@@ -15,6 +15,10 @@ generics::tidy
 #' @export
 magrittr::`%>%`
 
+#' @importFrom parsnip multi_predict
+#' @export
+parsnip::multi_predict
+
 # ------------------------------------------------------------------------------
 
 #' @importFrom utils globalVariables
