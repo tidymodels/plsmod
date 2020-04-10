@@ -1,6 +1,6 @@
 Package: projections
 Title: Model Wrappers for Projection Methods
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: 
     c(person(given = "Max",
              family = "Kuhn",
@@ -9,7 +9,7 @@ Authors@R:
       person(given = "RStudio",
              role = "cph"))
 Description: Bindings for additional regression models for use
-    with the 'parsnip' package, including ordinary and spare parial least 
+    with the 'parsnip' package, including ordinary and spare partial least 
     squares models for regression and classification (Rohart et al (2017) 
     <doi:10.1371/journal.pcbi.1005752>).
 URL: https://topepo.github.io/projections, https://github.com/topepo/projections
@@ -34,7 +34,7 @@ Imports:
 Suggests: 
     modeldata,
     testthat,
-    covr
-Remotes:
-    tidymodels/parsnip@0-1-0-rc
-    
+    covr,
+    spelling
+Language: en-US
+
