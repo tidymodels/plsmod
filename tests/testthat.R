@@ -1,4 +1,4 @@
 library(testthat)
-library(projections)
+library(plsmod)
 
-test_check("projections")
+test_check("plsmod")
