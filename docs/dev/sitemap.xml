@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://plsmod.tidymodels.org/index.html</loc>
+  </url>
+  <url>
+    <loc>https://plsmod.tidymodels.org/reference/multi_predict.html</loc>
+  </url>
+  <url>
+    <loc>https://plsmod.tidymodels.org/reference/pls.html</loc>
+  </url>
+  <url>
+    <loc>https://plsmod.tidymodels.org/reference/pls_fit.html</loc>
+  </url>
+  <url>
+    <loc>https://plsmod.tidymodels.org/reference/reexports.html</loc>
+  </url>
+  <url>
+    <loc>https://plsmod.tidymodels.org/reference/tidy.mixo_pls.html</loc>
+  </url>
+</urlset>
