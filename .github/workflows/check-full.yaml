@@ -70,6 +70,12 @@ jobs:
             eval sudo $cmd
           done < <(Rscript -e 'cat(remotes::system_requirements("ubuntu", "16.04"), sep = "\n")')
 
+      - name: Install Bioconductor
+        if: runner.os == 'Linux'
+        run: |
+          remotes::install_bioc("mixOmics")
+        shell: Rscript {0}
+
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
