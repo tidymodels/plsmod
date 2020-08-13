@@ -15,7 +15,7 @@ below to see their documentation.
 \describe{
   \item{generics}{\code{\link[generics]{tidy}}}
 
-  \item{magrittr}{\code{\link[magrittr]{\%>\%}}}
+  \item{magrittr}{\code{\link[magrittr:pipe]{\%>\%}}}
 
   \item{parsnip}{\code{\link[parsnip]{multi_predict}}}
 }}

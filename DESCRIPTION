@@ -19,13 +19,12 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.0.9000
+RoxygenNote: 7.1.1
 biocViews: mixOmics
 Depends: 
     parsnip (>= 0.1.0)
 Imports: 
     tibble,
-    mixOmics,
     dplyr,
     tidyr,
     generics,
@@ -37,4 +36,6 @@ Suggests:
     testthat,
     covr,
     spelling
+biocViews: 
+    mixOmics    
 Language: en-US
