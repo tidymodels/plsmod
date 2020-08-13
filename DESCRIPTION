@@ -25,6 +25,7 @@ Depends:
     parsnip (>= 0.1.0)
 Imports: 
     tibble,
+    mixOmics,
     dplyr,
     tidyr,
     generics,
@@ -36,6 +37,4 @@ Suggests:
     testthat,
     covr,
     spelling
-biocViews: 
-    mixOmics    
 Language: en-US
