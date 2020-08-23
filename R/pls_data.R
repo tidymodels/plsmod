@@ -10,6 +10,7 @@ make_pls_mixOmics <- function() {
   parsnip::set_model_engine("pls", "classification", "mixOmics")
   parsnip::set_model_engine("pls", "regression",     "mixOmics")
   parsnip::set_dependency("pls",   "mixOmics",       "mixOmics")
+  parsnip::set_dependency("pls",   "mixOmics",       "plsmod")
 
   parsnip::set_model_arg(
     model = "pls",
