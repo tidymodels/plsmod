@@ -129,7 +129,7 @@ pls functions that are sparse/dense or regression/classification." />
 <code>pls</code> functions that are sparse/dense or regression/classification.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>pls_fit</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, ncomp <span class='op'>=</span> <span class='cn'>NULL</span>, keepX <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>pls_fit</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, ncomp <span class='op'>=</span> <span class='cn'>NULL</span>, predictor_prop <span class='op'>=</span> <span class='fl'>1</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -145,15 +145,14 @@ data frame.</p></td>
     </tr>
     <tr>
       <th>ncomp</th>
-      <td><p>The number of PLS components. If left null, the maximum possible
+      <td><p>The number of PLS components. If left NULL, the maximum possible
 is used.</p></td>
     </tr>
     <tr>
-      <th>keepX</th>
-      <td><p>The number of non-zero loadings <em>per component</em>. If the value is
-a vector, the value is left as-is. Otherwise, the scalar is expanded to be
-the same for all components. If NULL, either <code><a href='https://rdrr.io/pkg/mixOmics/man/pls.html'>mixOmics::pls()</a></code> or
-<code><a href='https://rdrr.io/pkg/mixOmics/man/plsda.html'>mixOmics::plsda()</a></code> are used. Otherwise, their sparse analogs are used.</p></td>
+      <th>predictor_prop</th>
+      <td><p>The maximum proportion of original predictors that can
+have <em>non-zero</em> coefficients for each PLS component (via regularization).
+This value is used for all PLS components for X.</p></td>
     </tr>
     </table>
 

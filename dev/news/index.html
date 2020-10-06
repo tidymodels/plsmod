@@ -120,10 +120,14 @@
       <small>Source: <a href='https://github.com/tidymodels/plsmod/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="plsmod-development-version" class="section level1">
-<h1 class="page-header" data-toc-text="development version">
-<a href="#plsmod-development-version" class="anchor"></a>plsmod (development version)<small> Unreleased </small>
+    <div id="plsmod-010" class="section level1">
+<h1 class="page-header" data-toc-text="0.1.0">
+<a href="#plsmod-010" class="anchor"></a>plsmod 0.1.0<small> Unreleased </small>
 </h1>
+<ul>
+<li><p>The <code>num_terms</code> argument was removed in favor of <code>predictor_prop</code>, which is the maximum <em>proportion</em> of original predictors that can have non-zero coefficients for each PLS component. This makes it easier to tune and consistent with <code>recipes::step_pls()</code>.</p></li>
+<li><p>Fixed a bug that could prevent <code><a href="https://parsnip.tidymodels.org/reference/multi_predict.html">multi_predict()</a></code> from being invoked.</p></li>
+</ul>
 </div>
     <div id="plsmod-001" class="section level1">
 <h1 class="page-header" data-toc-text="0.0.1">
