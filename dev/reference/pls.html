@@ -106,12 +106,6 @@ in lieu of recreating the object from scratch." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -157,17 +151,17 @@ functions. If parameters need to be modified, <code><a href='https://rdrr.io/r/s
 in lieu of recreating the object from scratch.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>pls</span>(mode = <span class='st'>"unknown"</span>, num_terms = <span class='kw'>NULL</span>, num_comp = <span class='kw'>NULL</span>)
+    <pre class="usage"><span class='fu'>pls</span><span class='op'>(</span>mode <span class='op'>=</span> <span class='st'>"unknown"</span>, num_terms <span class='op'>=</span> <span class='cn'>NULL</span>, num_comp <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
 <span class='co'># S3 method for pls</span>
-<span class='fu'><a href='https://rdrr.io/r/stats/update.html'>update</a></span>(
-  <span class='kw'>object</span>,
-  parameters = <span class='kw'>NULL</span>,
-  num_terms = <span class='kw'>NULL</span>,
-  num_comp = <span class='kw'>NULL</span>,
-  fresh = <span class='fl'>FALSE</span>,
-  <span class='kw'>...</span>
-)</pre>
+<span class='fu'><a href='https://rdrr.io/r/stats/update.html'>update</a></span><span class='op'>(</span>
+  <span class='va'>object</span>,
+  parameters <span class='op'>=</span> <span class='cn'>NULL</span>,
+  num_terms <span class='op'>=</span> <span class='cn'>NULL</span>,
+  num_comp <span class='op'>=</span> <span class='cn'>NULL</span>,
+  fresh <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -227,10 +221,11 @@ model fit call. The possible model calls are shown in the Examples section
 below.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>pls</span>(num_comp = <span class='fl'>2</span>, num_terms = <span class='fl'>10</span>) <span class='op'>%&gt;%</span>
-  <span class='fu'>set_engine</span>(<span class='st'>"mixOmics"</span>) <span class='op'>%&gt;%</span>
-  <span class='fu'>set_mode</span>(<span class='st'>"regression"</span>) <span class='op'>%&gt;%</span>
-  <span class='fu'>translate</span>()</div><div class='output co'>#&gt; PLS Model Specification (regression)
+    <pre class="examples"><div class='input'><span class='fu'>pls</span><span class='op'>(</span>num_comp <span class='op'>=</span> <span class='fl'>2</span>, num_terms <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>set_engine</span><span class='op'>(</span><span class='st'>"mixOmics"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>set_mode</span><span class='op'>(</span><span class='st'>"regression"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>translate</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; PLS Model Specification (regression)
 #&gt; 
 #&gt; Main Arguments:
 #&gt;   num_terms = 10
@@ -240,11 +235,12 @@ below.</p>
 #&gt; 
 #&gt; Model fit template:
 #&gt; plsmod::pls_fit(x = missing_arg(), y = missing_arg(), keepX = 10, 
-#&gt;     ncomp = 2, mode = "regression")</div><div class='input'>
-<span class='fu'>pls</span>(num_comp = <span class='fl'>2</span>, num_terms = <span class='fl'>10</span>) <span class='op'>%&gt;%</span>
-  <span class='fu'>set_engine</span>(<span class='st'>"mixOmics"</span>) <span class='op'>%&gt;%</span>
-  <span class='fu'>set_mode</span>(<span class='st'>"classification"</span>) <span class='op'>%&gt;%</span>
-  <span class='fu'>translate</span>()</div><div class='output co'>#&gt; PLS Model Specification (classification)
+#&gt;     ncomp = 2)</div><div class='input'>
+<span class='fu'>pls</span><span class='op'>(</span>num_comp <span class='op'>=</span> <span class='fl'>2</span>, num_terms <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>set_engine</span><span class='op'>(</span><span class='st'>"mixOmics"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>set_mode</span><span class='op'>(</span><span class='st'>"classification"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>translate</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; PLS Model Specification (classification)
 #&gt; 
 #&gt; Main Arguments:
 #&gt;   num_terms = 10
@@ -254,11 +250,12 @@ below.</p>
 #&gt; 
 #&gt; Model fit template:
 #&gt; plsmod::pls_fit(x = missing_arg(), y = missing_arg(), keepX = 10, 
-#&gt;     ncomp = 2, mode = "regression")</div><div class='input'>
-<span class='fu'>pls</span>(num_comp = <span class='fl'>6</span>) <span class='op'>%&gt;%</span>
-  <span class='fu'>set_engine</span>(<span class='st'>"mixOmics"</span>) <span class='op'>%&gt;%</span>
-  <span class='fu'>set_mode</span>(<span class='st'>"regression"</span>) <span class='op'>%&gt;%</span>
-  <span class='fu'>translate</span>()</div><div class='output co'>#&gt; PLS Model Specification (regression)
+#&gt;     ncomp = 2)</div><div class='input'>
+<span class='fu'>pls</span><span class='op'>(</span>num_comp <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>set_engine</span><span class='op'>(</span><span class='st'>"mixOmics"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>set_mode</span><span class='op'>(</span><span class='st'>"regression"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>translate</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; PLS Model Specification (regression)
 #&gt; 
 #&gt; Main Arguments:
 #&gt;   num_comp = 6
@@ -266,28 +263,31 @@ below.</p>
 #&gt; Computational engine: mixOmics 
 #&gt; 
 #&gt; Model fit template:
-#&gt; plsmod::pls_fit(x = missing_arg(), y = missing_arg(), ncomp = 6, 
-#&gt;     mode = "regression")</div><div class='input'>
-<span class='fu'>pls</span>() <span class='op'>%&gt;%</span>
-  <span class='fu'>set_engine</span>(<span class='st'>"mixOmics"</span>) <span class='op'>%&gt;%</span>
-  <span class='fu'>set_mode</span>(<span class='st'>"classification"</span>) <span class='op'>%&gt;%</span>
-  <span class='fu'>translate</span>()</div><div class='output co'>#&gt; PLS Model Specification (classification)
+#&gt; plsmod::pls_fit(x = missing_arg(), y = missing_arg(), ncomp = 6)</div><div class='input'>
+<span class='fu'>pls</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>set_engine</span><span class='op'>(</span><span class='st'>"mixOmics"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>set_mode</span><span class='op'>(</span><span class='st'>"classification"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>translate</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; PLS Model Specification (classification)
 #&gt; 
 #&gt; Computational engine: mixOmics 
 #&gt; 
 #&gt; Model fit template:
-#&gt; plsmod::pls_fit(x = missing_arg(), y = missing_arg(), mode = "regression")</div><div class='input'>
+#&gt; plsmod::pls_fit(x = missing_arg(), y = missing_arg())</div><div class='input'>
 
-<span class='kw'>model</span> <span class='op'>&lt;-</span> <span class='fu'>pls</span>(num_terms = <span class='fl'>10</span>)
-<span class='kw'>model</span></div><div class='output co'>#&gt; PLS Model Specification (unknown)
+<span class='va'>model</span> <span class='op'>&lt;-</span> <span class='fu'>pls</span><span class='op'>(</span>num_terms <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
+<span class='va'>model</span>
+</div><div class='output co'>#&gt; PLS Model Specification (unknown)
 #&gt; 
 #&gt; Main Arguments:
 #&gt;   num_terms = 10
-#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/update.html'>update</a></span>(<span class='kw'>model</span>, num_terms = <span class='fl'>1</span>)</div><div class='output co'>#&gt; PLS Model Specification (unknown)
+#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/update.html'>update</a></span><span class='op'>(</span><span class='va'>model</span>, num_terms <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; PLS Model Specification (unknown)
 #&gt; 
 #&gt; Main Arguments:
 #&gt;   num_terms = 1
-#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/update.html'>update</a></span>(<span class='kw'>model</span>, num_terms = <span class='fl'>1</span>, fresh = <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; PLS Model Specification (unknown)
+#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/update.html'>update</a></span><span class='op'>(</span><span class='va'>model</span>, num_terms <span class='op'>=</span> <span class='fl'>1</span>, fresh <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; PLS Model Specification (unknown)
 #&gt; 
 #&gt; Main Arguments:
 #&gt;   num_terms = 1
