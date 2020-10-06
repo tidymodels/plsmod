@@ -1,13 +1,26 @@
 context("pls regression models")
 
-load(test_path("reg_examples.RData"))
-
 library(tibble)
+library(modeldata)
+library(mixOmics)
+data(meats)
+
+## -----------------------------------------------------------------------------
+
+for_test <- 1:10
+y_tr <- meats[-for_test, c("water", "fat", "protein")]
+y_te <- meats[ for_test, c("water", "fat", "protein")]
+
+x_tr <- meats[-for_test, 1:100]
+x_te <- meats[ for_test, 1:100]
+
+multi_model  <- mixOmics::pls(x_tr, y_tr, ncomp = 3)
+uni_model  <- mixOmics::pls(x_tr, y_tr[[1]], ncomp = 3)
 
 # ------------------------------------------------------------------------------
 
 pls_spec <-
-  pls(num_comp = 3) %>%
+  plsmod::pls(num_comp = 3) %>%
   set_engine("mixOmics") %>%
   set_mode("regression")
 
@@ -16,21 +29,21 @@ pls_spec <-
 test_that('Multivariate model fitting', {
   expect_error(
     parsnip_pls_multi <-
-      pls(num_comp = 3) %>%
+      plsmod::pls(num_comp = 3) %>%
       set_engine("mixOmics") %>%
       set_mode("regression") %>%
-      fit_xy(x = old_x, y = old_y),
+      fit_xy(x = x_tr, y = y_tr),
     regexp = NA
   )
 
-  expect_equal(parsnip_pls_multi$fit$loadings, mo_pls_multi$loadings)
+  expect_equal(parsnip_pls_multi$fit$loadings, multi_model$loadings)
 
   expect_error(
-    parsnip_pls_multi_num <- predict(parsnip_pls_multi, as.data.frame(new_x)),
+    parsnip_pls_multi_num <- predict(parsnip_pls_multi, as.data.frame(x_te)),
     regexp = NA
   )
 
-  mo_pls_pred <- predict(mo_pls_multi, new_x)$predict[,,3]
+  mo_pls_pred <- predict(multi_model, x_te)$predict[,,3]
   mo_pls_pred <- as_tibble(mo_pls_pred)
   names(mo_pls_pred) <- paste0(".pred_", names(mo_pls_pred))
 
@@ -41,17 +54,17 @@ test_that('Multivariate model fitting', {
 
   expect_error(
     parsnip_pls_multi_pred_num <-
-      multi_predict(parsnip_pls_multi, as.data.frame(new_x), num_comp = 1:2),
+      multi_predict(parsnip_pls_multi, as.data.frame(x_te), num_comp = 1:2),
     regexp = NA
   )
-  expect_equal(nrow(parsnip_pls_multi_pred_num), nrow(new_x))
+  expect_equal(nrow(parsnip_pls_multi_pred_num), nrow(x_te))
   expect_equal(nrow(parsnip_pls_multi_pred_num$.pred[[1]]), 2)
   expect_equal(
     names(parsnip_pls_multi_pred_num$.pred[[1]]),
     c('num_comp', '.pred_water', '.pred_fat', '.pred_protein')
   )
 
-  mo_pls_pred_9 <- t(predict(mo_pls_multi, new_x)$predict[9,,1:2])
+  mo_pls_pred_9 <- t(predict(multi_model, x_te)$predict[9,,1:2])
   mo_pls_pred_9 <- as_tibble(mo_pls_pred_9)
   names(mo_pls_pred_9) <- paste0(".pred_", names(mo_pls_pred_9))
 
@@ -66,21 +79,21 @@ test_that('Multivariate model fitting', {
 test_that('Univariate model fitting', {
   expect_error(
     parsnip_pls_uni <-
-      pls(num_comp = 3) %>%
+      plsmod::pls(num_comp = 3) %>%
       set_engine("mixOmics") %>%
       set_mode("regression") %>%
-      fit_xy(x = old_x, y = old_y[[1]]),
+      fit_xy(x = x_tr, y = y_tr[[1]]),
     regexp = NA
   )
 
-  expect_equal(parsnip_pls_uni$fit$loadings, mo_pls_uni$loadings)
+  expect_equal(parsnip_pls_uni$fit$loadings, uni_model$loadings)
 
   expect_error(
-    parsnip_pls_uni_num <- predict(parsnip_pls_uni, as.data.frame(new_x)),
+    parsnip_pls_uni_num <- predict(parsnip_pls_uni, as.data.frame(x_te)),
     regexp = NA
   )
 
-  mo_pls_pred <- predict(mo_pls_uni, new_x)$predict[,,3]
+  mo_pls_pred <- predict(uni_model, x_te)$predict[,,3]
   mo_pls_pred <- as_tibble(mo_pls_pred)
   names(mo_pls_pred) <- ".pred"
 
@@ -91,17 +104,17 @@ test_that('Univariate model fitting', {
 
   expect_error(
     parsnip_pls_multi_pred_num <-
-      multi_predict(parsnip_pls_uni, as.data.frame(new_x), num_comp = 1:2),
+      multi_predict(parsnip_pls_uni, as.data.frame(x_te), num_comp = 1:2),
     regexp = NA
   )
-  expect_equal(nrow(parsnip_pls_multi_pred_num), nrow(new_x))
+  expect_equal(nrow(parsnip_pls_multi_pred_num), nrow(x_te))
   expect_equal(nrow(parsnip_pls_multi_pred_num$.pred[[1]]), 2)
   expect_equal(
     names(parsnip_pls_multi_pred_num$.pred[[1]]),
     c('num_comp', '.pred')
   )
 
-  mo_pls_pred_9 <- predict(mo_pls_uni, new_x)$predict[9,,1:2]
+  mo_pls_pred_9 <- predict(uni_model, x_te)$predict[9,,1:2]
   mo_pls_pred_9 <- tibble(.pred = mo_pls_pred_9)
 
   expect_equivalent(
