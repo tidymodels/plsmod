@@ -37,7 +37,7 @@ make_pls_mixOmics <- function() {
       interface = "matrix",
       protect = c("x", "y"),
       func = c(pkg = "plsmod", fun = "pls_fit"),
-      defaults = list(mode = "regression")
+      defaults = list()
     )
   )
 
@@ -49,7 +49,7 @@ make_pls_mixOmics <- function() {
       interface = "matrix",
       protect = c("x", "y"),
       func = c(pkg = "plsmod", fun = "pls_fit"),
-      defaults = list(mode = "regression")
+      defaults = list()
     )
   )
 
