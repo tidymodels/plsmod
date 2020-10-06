@@ -16,9 +16,9 @@ coverage](https://codecov.io/gh/tidymodels/plsmod/branch/master/graph/badge.svg)
 [![R-CMD-check](https://github.com/tidymodels/plsmod/workflows/R-CMD-check/badge.svg)](https://github.com/tidymodels/plsmod/actions)
 <!-- badges: end -->
 
-This package is a help package for
-[parsnip](https://tidymodels.github.io/parsnip/) that enables linear
-projection models (such as partial least squares, PLS) in the tidymodels
+This package is a helper package for
+[parsnip](https://parsnip.tidymodels.org) that enables linear projection
+models (such as partial least squares, PLS) in the tidymodels
 infrastructure.
 
 ## Installation
