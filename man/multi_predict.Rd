@@ -35,7 +35,7 @@ Model predictions across many sub-models
 data(meats, package = "modeldata")
 
 mv_meats <-
-  pls(num_comp = 20, num_terms = 10) \%>\%
+  pls(num_comp = 20) \%>\%
   set_engine("mixOmics") \%>\%
   set_mode("regression") \%>\%
   fit_xy(x = meats[-(1:5), 1:100], y = meats[-(1:5), 101:103])

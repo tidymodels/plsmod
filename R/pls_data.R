@@ -15,9 +15,9 @@ make_pls_mixOmics <- function() {
   parsnip::set_model_arg(
     model = "pls",
     eng = "mixOmics",
-    parsnip = "num_terms",
-    original = "keepX",
-    func = list(pkg = "dials", fun = "num_terms", range = c(1, 4)),
+    parsnip = "predictor_prop",
+    original = "predictor_prop",
+    func = list(pkg = "dials", fun = "predictor_prop"),
     has_submodel = TRUE
   )
   parsnip::set_model_arg(

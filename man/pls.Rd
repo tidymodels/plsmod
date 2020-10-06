@@ -5,12 +5,12 @@
 \alias{update.pls}
 \title{General Interface for Partial Least Squares (PLS)}
 \usage{
-pls(mode = "unknown", num_terms = NULL, num_comp = NULL)
+pls(mode = "unknown", predictor_prop = NULL, num_comp = NULL)
 
 \method{update}{pls}(
   object,
   parameters = NULL,
-  num_terms = NULL,
+  predictor_prop = NULL,
   num_comp = NULL,
   fresh = FALSE,
   ...
@@ -21,9 +21,9 @@ pls(mode = "unknown", num_terms = NULL, num_comp = NULL)
 Possible values for this model are "unknown", "regression", or
 "classification".}
 
-\item{num_terms}{The number of predictors that are allowed to
-affect each PLS loading. The default allows each predictor to have
-non-zero loadings for each PLS component.}
+\item{predictor_prop}{The maximum proportion of original predictors that can
+have \emph{non-zero} coefficients for each PLS component (via regularization).
+This value is used for all PLS components for X.}
 
 \item{num_comp}{The number of PLS components to retain.}
 
@@ -45,8 +45,8 @@ fitting and allows the model to be created using R. The main
 arguments for the
 model are:
 \itemize{
-\item \code{num_terms}: The number of predictors that are allowed to
-affect each PLS loading.
+\item \code{predictor_prop}: The proportion of predictors that are allowed
+to affect each PLS loading.
 \item \code{num_comp}: The number of PLS components to retain.
 }
 These arguments are converted to their specific names at the
@@ -72,12 +72,12 @@ below.
 }
 
 \examples{
-pls(num_comp = 2, num_terms = 10) \%>\%
+pls(num_comp = 2, predictor_prop = 0.2) \%>\%
   set_engine("mixOmics") \%>\%
   set_mode("regression") \%>\%
   translate()
 
-pls(num_comp = 2, num_terms = 10) \%>\%
+pls(num_comp = 2, predictor_prop = 1) \%>\%
   set_engine("mixOmics") \%>\%
   set_mode("classification") \%>\%
   translate()
@@ -93,8 +93,8 @@ pls() \%>\%
   translate()
 
 
-model <- pls(num_terms = 10)
+model <- pls(predictor_prop =  0.1)
 model
-update(model, num_terms = 1)
-update(model, num_terms = 1, fresh = TRUE)
+update(model, predictor_prop = 1)
+update(model, predictor_prop = 1, fresh = TRUE)
 }

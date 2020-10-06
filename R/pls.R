@@ -5,8 +5,8 @@
 #'  arguments for the
 #'  model are:
 #' \itemize{
-#'   \item \code{num_terms}: The number of predictors that are allowed to
-#'   affect each PLS loading.
+#'   \item \code{predictor_prop}: The proportion of predictors that are allowed
+#'   to affect each PLS loading.
 #'   \item \code{num_comp}: The number of PLS components to retain.
 #' }
 #' These arguments are converted to their specific names at the
@@ -19,9 +19,9 @@
 #' @param mode A single character string for the type of model.
 #'  Possible values for this model are "unknown", "regression", or
 #'  "classification".
-#' @param num_terms The number of predictors that are allowed to
-#'   affect each PLS loading. The default allows each predictor to have
-#'   non-zero loadings for each PLS component.
+#' @param predictor_prop The maximum proportion of original predictors that can
+#'  have _non-zero_ coefficients for each PLS component (via regularization).
+#'  This value is used for all PLS components for X.
 #' @param num_comp The number of PLS components to retain.
 #' @details The model can be created using the `fit()` function using the
 #'  following _engines_:
@@ -36,12 +36,12 @@
 #'  below.
 #'
 #' @examples
-#' pls(num_comp = 2, num_terms = 10) %>%
+#' pls(num_comp = 2, predictor_prop = 0.2) %>%
 #'   set_engine("mixOmics") %>%
 #'   set_mode("regression") %>%
 #'   translate()
 #'
-#' pls(num_comp = 2, num_terms = 10) %>%
+#' pls(num_comp = 2, predictor_prop = 1) %>%
 #'   set_engine("mixOmics") %>%
 #'   set_mode("classification") %>%
 #'   translate()
@@ -59,11 +59,11 @@
 #'
 #' @export
 pls <-
-  function(mode = "unknown", num_terms = NULL, num_comp = NULL) {
+  function(mode = "unknown", predictor_prop = NULL, num_comp = NULL) {
 
     args <- list(
-      num_terms = enquo(num_terms),
-      num_comp  = enquo(num_comp)
+      predictor_prop = enquo(predictor_prop),
+      num_comp       = enquo(num_comp)
     )
 
     parsnip::new_model_spec(
@@ -100,17 +100,17 @@ print.pls <- function(x, ...) {
 #' @param fresh A logical for whether the arguments should be
 #'  modified in-place of or replaced wholesale.
 #' @examples
-#' model <- pls(num_terms = 10)
+#' model <- pls(predictor_prop =  0.1)
 #' model
-#' update(model, num_terms = 1)
-#' update(model, num_terms = 1, fresh = TRUE)
+#' update(model, predictor_prop = 1)
+#' update(model, predictor_prop = 1, fresh = TRUE)
 #' @method update pls
 #' @rdname pls
 #' @export
 update.pls <-
   function(object,
            parameters = NULL,
-           num_terms = NULL, num_comp = NULL,
+           predictor_prop = NULL, num_comp = NULL,
            fresh = FALSE, ...) {
     parsnip::update_dot_check(...)
 
@@ -119,7 +119,7 @@ update.pls <-
     }
 
     args <- list(
-      num_terms    = enquo(num_terms),
+      predictor_prop    = enquo(predictor_prop),
       num_comp  = enquo(num_comp)
     )
 
@@ -153,9 +153,6 @@ check_args.pls <- function(object) {
 
   if (is.numeric(args$num_comp) && args$num_comp < 0)
     rlang::abort("`num_comp` should be >= 1.")
-
-  if (is.numeric(args$num_terms) && args$num_terms < 0)
-    rlang::abort("`num_terms` should be >= 1.")
 
   invisible(object)
 }
