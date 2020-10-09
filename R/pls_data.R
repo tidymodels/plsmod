@@ -41,6 +41,18 @@ make_pls_mixOmics <- function() {
     )
   )
 
+  parsnip::set_encoding(
+    model = "pls",
+    eng = "mixOmics",
+    mode = "regression",
+    options = list(
+      predictor_indicators = "traditional",
+      compute_intercept = TRUE,
+      remove_intercept = TRUE,
+      allow_sparse_x = FALSE
+    )
+  )
+
   parsnip::set_fit(
     model = "pls",
     eng = "mixOmics",
@@ -50,6 +62,18 @@ make_pls_mixOmics <- function() {
       protect = c("x", "y"),
       func = c(pkg = "plsmod", fun = "pls_fit"),
       defaults = list()
+    )
+  )
+
+  parsnip::set_encoding(
+    model = "pls",
+    eng = "mixOmics",
+    mode = "classification",
+    options = list(
+      predictor_indicators = "traditional",
+      compute_intercept = TRUE,
+      remove_intercept = TRUE,
+      allow_sparse_x = FALSE
     )
   )
 
