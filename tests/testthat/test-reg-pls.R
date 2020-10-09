@@ -123,3 +123,28 @@ test_that('Univariate model fitting', {
   )
 })
 
+# ------------------------------------------------------------------------------
+
+test_that('dummy variable encodings', {
+  data(penguins, package = "modeldata")
+  penguins <- na.omit(penguins)
+  expect_error(
+    parsnip_pls_multi <-
+      plsmod::pls(num_comp = 3) %>%
+      set_engine("mixOmics") %>%
+      set_mode("regression") %>%
+      fit(body_mass_g ~ ., data = penguins),
+    regexp = NA
+  )
+
+  expect_true(!any(names(parsnip_pls_multi$fit$X) == "(Intercept)"))
+
+  expect_error(
+    predict(parsnip_pls_multi, penguins),
+    regexp = NA
+  )
+  expect_error(
+    multi_predict(parsnip_pls_multi, penguins, num_comp = 1:3),
+    regexp = NA
+  )
+})

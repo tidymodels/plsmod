@@ -165,6 +165,19 @@ multi_predict._mixo_pls <-
     if (any(names(rlang::enquos(...)) == "newdata"))
       rlang::abort("Did you mean to use `new_data` instead of `newdata`?")
 
+    ## -------------------------------------------------------------------------
+    ## prepare data
+
+    new_data <- parsnip::prepare_data(object, new_data)
+
+    # preprocess data
+    if (!is.null(object$spec$method$pred$prob$pre)) {
+      new_data <- object$spec$method$pred$prob$pre(new_data, object)
+    }
+
+    ## -------------------------------------------------------------------------
+
+
     if (is.null(num_comp)) {
       num_comp <- object$fit$sncomp
     }
