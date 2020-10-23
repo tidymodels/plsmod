@@ -1,4 +1,9 @@
-# plsmod (development version)
+# plsmod 0.1.1
+
+ * Small updates so that `plsmod` can be run in parallel using psock clusters 
+ 
+ * Updates for encoding requirements related to current version of `parsnip`. 
+
 
 # plsmod 0.1.0
 
