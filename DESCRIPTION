@@ -38,4 +38,3 @@ Suggests:
     covr,
     spelling
 Language: en-US
-Remotes: tidymodels/parsnip
