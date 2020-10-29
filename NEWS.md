@@ -1,3 +1,5 @@
+# plsmod (development version)
+
 # plsmod 0.1.1
 
  * Small updates so that `plsmod` can be run in parallel using psock clusters 
