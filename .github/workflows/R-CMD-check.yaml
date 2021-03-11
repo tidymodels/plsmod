@@ -62,7 +62,7 @@ jobs:
         with:
           path: ${{ env.R_LIBS_USER }}
           key: ${{ matrix.config.os }}-${{ steps.install-r.outputs.installed-r-version }}-1-${{ hashFiles('.github/r-depends.rds') }}
-          restore-keys: ${{ matrix.config.os }}-${{ steps.install-r.outputs.installed-r-version }}-2-
+          restore-keys: ${{ matrix.config.os }}-${{ steps.install-r.outputs.installed-r-version }}-1-
 
       - name: Install system dependencies
         if: runner.os == 'Linux'
@@ -70,6 +70,10 @@ jobs:
           pak::local_system_requirements(execute = TRUE)
           pak::pkg_system_requirements("rcmdcheck", execute = TRUE)
         shell: Rscript {0}
+
+      - name: Install system dependency libglpk-dev
+        if: runner.os == 'Linux'
+        run: sudo apt install libglpk-dev
 
       - name: Install dependencies
         run: |
