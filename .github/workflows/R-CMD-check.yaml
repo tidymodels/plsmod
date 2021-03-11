@@ -51,6 +51,10 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@v1
 
+      - name: Install system dependency libglpk-dev
+        if: runner.os == 'Linux'
+        run: sudo apt install libglpk-dev
+
       - name: Install pak and query dependencies
         run: |
           install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
@@ -70,10 +74,6 @@ jobs:
           pak::local_system_requirements(execute = TRUE)
           pak::pkg_system_requirements("rcmdcheck", execute = TRUE)
         shell: Rscript {0}
-
-      - name: Install system dependency libglpk-dev
-        if: runner.os == 'Linux'
-        run: sudo apt install libglpk-dev
 
       - name: Install dependencies
         run: |
