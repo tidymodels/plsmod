@@ -33,8 +33,6 @@ jobs:
           - {os: ubuntu-18.04,   r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/bionic/latest"}
           - {os: ubuntu-18.04,   r: 'oldrel',  rspm: "https://packagemanager.rstudio.com/cran/__linux__/bionic/latest"}
           - {os: ubuntu-18.04,   r: '3.5',     rspm: "https://packagemanager.rstudio.com/cran/__linux__/bionic/latest"}
-          - {os: ubuntu-18.04,   r: '3.4',     rspm: "https://packagemanager.rstudio.com/cran/__linux__/bionic/latest"}
-          - {os: ubuntu-18.04,   r: '3.3',     rspm: "https://packagemanager.rstudio.com/cran/__linux__/bionic/latest"}
 
     env:
       RSPM: ${{ matrix.config.rspm }}
@@ -50,10 +48,6 @@ jobs:
           http-user-agent: ${{ matrix.config.http-user-agent }}
 
       - uses: r-lib/actions/setup-pandoc@v1
-
-      - name: Install system dependency libglpk-dev
-        if: runner.os == 'Linux'
-        run: sudo apt install libglpk-dev
 
       - name: Install pak and query dependencies
         run: |
@@ -74,6 +68,10 @@ jobs:
           pak::local_system_requirements(execute = TRUE)
           pak::pkg_system_requirements("rcmdcheck", execute = TRUE)
         shell: Rscript {0}
+
+      - name: Install system dependency libglpk-dev
+        if: runner.os == 'Linux'
+        run: sudo apt install libglpk-dev
 
       - name: Install dependencies
         run: |
