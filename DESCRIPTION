@@ -13,7 +13,7 @@ Description: Bindings for additional regression models for use
     with the 'parsnip' package, including ordinary and spare partial least 
     squares models for regression and classification (Rohart et al (2017) 
     <doi:10.1371/journal.pcbi.1005752>).
-URL: https://github.com/tidymodels/plsmod
+URL: https://plsmod.tidymodels.org, https://github.com/tidymodels/plsmod
 BugReports: https://github.com/tidymodels/plsmod/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
