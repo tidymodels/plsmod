@@ -29,7 +29,7 @@ pls_fit <- function(x, y, ncomp = NULL, predictor_prop = 1, ...) {
   predictor_prop <- min(predictor_prop, 1)
   cuts <- seq(0, p, length.out = p + 1)
   keepX <- as.integer(cut(predictor_prop * p, breaks = cuts, include.lowest = TRUE))
-  keepX <- rep(keepX, p)
+  keepX <- rep(keepX, ncomp)
 
   if (is.factor(y)) {
     res <- mixOmics::splsda(X = x, Y = y, ncomp = ncomp, keepX = keepX, ...)

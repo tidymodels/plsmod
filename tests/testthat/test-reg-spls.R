@@ -1,8 +1,10 @@
 context("spls regression models")
 
+library(mixOmics)
+library(plsmod)
 library(tibble)
 library(modeldata)
-library(mixOmics)
+
 data(meats)
 
 ## -----------------------------------------------------------------------------
@@ -22,7 +24,7 @@ uni_model  <- mixOmics::spls(x_tr, y_tr[[1]], ncomp = 3, keepX = rep(100, 100))
 test_that('Multivariate model fitting', {
   expect_error(
     parsnip_spls_multi <-
-      plsmod::pls(num_comp = 3, predictor_prop = 1) %>%
+      parsnip::pls(num_comp = 3, predictor_prop = 1) %>%
       set_engine("mixOmics") %>%
       set_mode("regression") %>%
       fit_xy(x = x_tr, y = y_tr),
@@ -72,7 +74,7 @@ test_that('Multivariate model fitting', {
 test_that('Univariate model fitting', {
   expect_error(
     parsnip_spls_uni <-
-      plsmod::pls(num_comp = 3, predictor_prop = 1) %>%
+      parsnip::pls(num_comp = 3, predictor_prop = 1) %>%
       set_engine("mixOmics") %>%
       set_mode("regression") %>%
       fit_xy(x = x_tr, y = y_tr[[1]]),
