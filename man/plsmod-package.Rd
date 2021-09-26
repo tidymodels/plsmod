@@ -45,7 +45,7 @@ outcomes separately:\if{html}{\out{<div class="sourceCode r">}}\preformatted{for
 form_fit
 }\if{html}{\out{</div>}}\preformatted{## parsnip model object
 ## 
-## Fit time:  27ms 
+## Fit time:  26ms 
 ## 
 ## Call:
 ##  mixOmics::spls(X = x, Y = y, ncomp = ncomp, keepX = keepX) 
@@ -76,7 +76,7 @@ sparse_pls_spec \%>\%
   fit_xy(x = meats \%>\% select(-protein), y = meats$protein)
 }\if{html}{\out{</div>}}\preformatted{## parsnip model object
 ## 
-## Fit time:  25ms 
+## Fit time:  27ms 
 ## 
 ## Call:
 ##  mixOmics::spls(X = x, Y = y, ncomp = ncomp, keepX = keepX) 
