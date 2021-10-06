@@ -4,7 +4,7 @@
 \alias{details_pls_mixOmics}
 \title{Partial least squares via mixOmics}
 \description{
-The mixOmics package can fit several different types of PLS models
+The mixOmics package can fit several different types of PLS models.
 }
 \details{
 For this engine, there are multiple modes: classification and regression
@@ -13,7 +13,7 @@ For this engine, there are multiple modes: classification and regression
 This model has 2 tuning parameters:
 \itemize{
 \item \code{predictor_prop}: Proportion of Predictors (type: double, default:
-see nelow)
+see below)
 \item \code{num_comp}: # Components (type: integer, default: 2L)
 }
 }
@@ -78,9 +78,9 @@ formula method via
 \code{\link[=fit.model_spec]{fit.model_spec()}}, parsnip will
 convert factor columns to indicators.
 
-Variance calculations are used in these computations so no
-\emph{zero-variance} predictors (i.e., with a single unique value) should be
-eliminated before fitting the model.
+Variance calculations are used in these computations so \emph{zero-variance}
+predictors (i.e., with a single unique value) should be eliminated
+before fitting the model.
 
 Predictors should have the same scale. One way to achieve this is to
 center and scale each so that each predictor has mean zero and a

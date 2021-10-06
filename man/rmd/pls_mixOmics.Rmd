@@ -8,7 +8,7 @@
 ```{r mixOmics-param-info, echo = FALSE}
 defaults <- 
   tibble::tibble(parsnip = c("num_comp", "predictor_prop"),
-                 default = c("2L",           "see nelow"))
+                 default = c("2L",           "see below"))
 
 param <-
   pls() %>% 

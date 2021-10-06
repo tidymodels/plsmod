@@ -23,7 +23,7 @@ data(meats, package = "modeldata")
 }\if{html}{\out{</div>}}
 
 Note that using \code{tidymodels_prefer()} will resulting getting
-\code{plsmod::pls()} instead of \code{mixOmics::pls()} when simplify running
+\code{parsnip::pls()} instead of \code{mixOmics::pls()} when simply running
 \code{pls()}.
 
 Although plsmod can fit multivariate models, we’ll concentration on a
@@ -38,7 +38,7 @@ certain loadings to zero via regularization.\if{html}{\out{<div class="sourceCod
   set_mode("regression")
 }\if{html}{\out{</div>}}
 
-The model is fit either with a formula or my passing the predictors and
+The model is fit either with a formula or by passing the predictors and
 outcomes separately:\if{html}{\out{<div class="sourceCode r">}}\preformatted{form_fit <- 
   sparse_pls_spec \%>\% 
   fit(protein ~ ., data = meats)
@@ -76,7 +76,7 @@ sparse_pls_spec \%>\%
   fit_xy(x = meats \%>\% select(-protein), y = meats$protein)
 }\if{html}{\out{</div>}}\preformatted{## parsnip model object
 ## 
-## Fit time:  27ms 
+## Fit time:  26ms 
 ## 
 ## Call:
 ##  mixOmics::spls(X = x, Y = y, ncomp = ncomp, keepX = keepX) 

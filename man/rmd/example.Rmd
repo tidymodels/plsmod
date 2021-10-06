@@ -11,7 +11,7 @@ theme_set(theme_bw())
 data(meats, package = "modeldata")
 ```
 
-Note that using `tidymodels_prefer()` will resulting getting `plsmod::pls()` instead of `mixOmics::pls()` when simplify running `pls()`. 
+Note that using `tidymodels_prefer()` will resulting getting `parsnip::pls()` instead of `mixOmics::pls()` when simply running `pls()`.
 
 Although plsmod can fit multivariate models, we'll concentration on a univariate model that predicts the percentage of protein in the samples.  
 
@@ -28,7 +28,7 @@ sparse_pls_spec <-
   set_mode("regression")
 ```
 
-The model is fit either with a formula or my passing the predictors and outcomes separately: 
+The model is fit either with a formula or by passing the predictors and outcomes separately:
 
 ```{r}
 form_fit <- 
