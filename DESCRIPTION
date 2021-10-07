@@ -39,5 +39,4 @@ Suggests:
     spelling
 Language: en-US
 Remotes:
-    tidymodels/parsnip@model-migration
-    
+    tidymodels/parsnip

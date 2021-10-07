@@ -2,7 +2,7 @@
 library(dials)
 library(parsnip)
 library(tune)
-library(discrim)
+library(plsmod)
 library(dplyr)
 
 convert_args <- function(model_name) {
