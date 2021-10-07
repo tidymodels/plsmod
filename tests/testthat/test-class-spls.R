@@ -1,8 +1,10 @@
 context("spls classification models")
 
+library(mixOmics)
+library(plsmod)
 library(tibble)
 library(modeldata)
-library(mixOmics)
+
 data("penguins")
 penguins <- na.omit(penguins)
 
@@ -20,7 +22,7 @@ uni_model  <- mixOmics::splsda(x_tr, y_tr, ncomp = 3, keepX = rep(2, 4))
 # ------------------------------------------------------------------------------
 
 pls_spec <-
-  plsmod::pls(num_comp = 3, predictor_prop = 0.5) %>%
+  parsnip::pls(num_comp = 3, predictor_prop = 0.5) %>%
   set_engine("mixOmics") %>%
   set_mode("classification")
 
@@ -30,7 +32,7 @@ pls_spec <-
 test_that('classification model fitting', {
   expect_error(
     parsnip_spls_da <-
-      plsmod::pls(num_comp = 3, predictor_prop = 0.5) %>%
+      parsnip::pls(num_comp = 3, predictor_prop = 0.5) %>%
       set_engine("mixOmics") %>%
       set_mode("classification") %>%
       fit_xy(x = x_tr, y = y_tr),

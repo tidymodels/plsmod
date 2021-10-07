@@ -1,8 +1,10 @@
 context("pls regression models")
 
+library(mixOmics)
+library(plsmod)
 library(tibble)
 library(modeldata)
-library(mixOmics)
+
 data(meats)
 
 ## -----------------------------------------------------------------------------
@@ -20,7 +22,7 @@ uni_model  <- mixOmics::pls(x_tr, y_tr[[1]], ncomp = 3)
 # ------------------------------------------------------------------------------
 
 pls_spec <-
-  plsmod::pls(num_comp = 3) %>%
+  parsnip::pls(num_comp = 3) %>%
   set_engine("mixOmics") %>%
   set_mode("regression")
 
@@ -29,7 +31,7 @@ pls_spec <-
 test_that('Multivariate model fitting', {
   expect_error(
     parsnip_pls_multi <-
-      plsmod::pls(num_comp = 3) %>%
+      parsnip::pls(num_comp = 3) %>%
       set_engine("mixOmics") %>%
       set_mode("regression") %>%
       fit_xy(x = x_tr, y = y_tr),
@@ -79,7 +81,7 @@ test_that('Multivariate model fitting', {
 test_that('Univariate model fitting', {
   expect_error(
     parsnip_pls_uni <-
-      plsmod::pls(num_comp = 3) %>%
+      parsnip::pls(num_comp = 3) %>%
       set_engine("mixOmics") %>%
       set_mode("regression") %>%
       fit_xy(x = x_tr, y = y_tr[[1]]),
@@ -130,7 +132,7 @@ test_that('dummy variable encodings', {
   penguins <- na.omit(penguins)
   expect_error(
     parsnip_pls_multi <-
-      plsmod::pls(num_comp = 3) %>%
+      parsnip::pls(num_comp = 3) %>%
       set_engine("mixOmics") %>%
       set_mode("regression") %>%
       fit(body_mass_g ~ ., data = penguins),

@@ -1,12 +1,5 @@
 # nocov
 make_pls_mixOmics <- function() {
-  parsnip::set_new_model("pls")
-
-  parsnip::set_model_mode("pls", "classification")
-  parsnip::set_model_mode("pls", "regression")
-
-  # ------------------------------------------------------------------------------
-
   parsnip::set_model_engine("pls", "classification", "mixOmics")
   parsnip::set_model_engine("pls", "regression",     "mixOmics")
   parsnip::set_dependency("pls",   "mixOmics",       "mixOmics")
