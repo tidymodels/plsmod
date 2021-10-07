@@ -19,16 +19,19 @@
     <loc>https://plsmod.tidymodels.org/news/index.html</loc>
   </url>
   <url>
+    <loc>https://plsmod.tidymodels.org/reference/details_pls_mixOmics.html</loc>
+  </url>
+  <url>
     <loc>https://plsmod.tidymodels.org/reference/index.html</loc>
   </url>
   <url>
     <loc>https://plsmod.tidymodels.org/reference/multi_predict.html</loc>
   </url>
   <url>
-    <loc>https://plsmod.tidymodels.org/reference/pls.html</loc>
+    <loc>https://plsmod.tidymodels.org/reference/pls_fit.html</loc>
   </url>
   <url>
-    <loc>https://plsmod.tidymodels.org/reference/pls_fit.html</loc>
+    <loc>https://plsmod.tidymodels.org/reference/plsmod-package.html</loc>
   </url>
   <url>
     <loc>https://plsmod.tidymodels.org/reference/reexports.html</loc>
