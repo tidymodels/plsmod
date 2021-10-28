@@ -49,6 +49,13 @@ jobs:
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
 
+      - name: Install system dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y libglpk-dev
+
+
       - uses: r-lib/actions/setup-r-dependencies@v1
         with:
           extra-packages: rcmdcheck
