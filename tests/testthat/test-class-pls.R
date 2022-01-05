@@ -120,3 +120,19 @@ test_that('classification model fitting', {
   )
 
 })
+
+test_that('mode specific package dependencies', {
+  expect_identical(
+    get_from_env(paste0("pls", "_pkgs")) %>%
+      dplyr::filter(engine == "mixOmics", mode == "classification") %>%
+      dplyr::pull(pkg),
+    list(c("mixOmics", "plsmod"))
+  )
+
+  expect_identical(
+    get_from_env(paste0("pls", "_pkgs")) %>%
+      dplyr::filter(engine == "mixOmics", mode == "regression") %>%
+      dplyr::pull(pkg),
+    list(c("mixOmics", "plsmod"))
+  )
+})
