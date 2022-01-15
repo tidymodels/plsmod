@@ -30,7 +30,7 @@ Suggests:
     spelling,
     testthat
 Remotes:
-    tidymodels/parsnip
+    tidymodels/parsnip#631
 biocViews: mixOmics
 Config/Needs/website: 
     tidyverse/tidytemplate
