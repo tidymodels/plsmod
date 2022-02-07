@@ -27,6 +27,11 @@ pls_spec <-
 # ------------------------------------------------------------------------------
 
 test_that('classification model fitting', {
+  # Failures on r-devel are upstream in mixOmics. See
+  # https://github.com/mixOmicsTeam/mixOmics/issues/162
+  skip_on_cran()
+  skip_if(grepl("development", R.version$status))
+
   expect_error(
     parsnip_pls_da <-
       plsmod::pls(num_comp = 3) %>%

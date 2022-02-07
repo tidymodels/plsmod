@@ -20,6 +20,11 @@ uni_model  <- mixOmics::spls(x_tr, y_tr[[1]], ncomp = 3, keepX = rep(100, 100))
 # ------------------------------------------------------------------------------
 
 test_that('Multivariate model fitting', {
+  # Failures on r-devel are upstream in mixOmics. See
+  # https://github.com/mixOmicsTeam/mixOmics/issues/162
+  skip_on_cran()
+  skip_if(grepl("development", R.version$status))
+
   expect_error(
     parsnip_spls_multi <-
       plsmod::pls(num_comp = 3, predictor_prop = 1) %>%
@@ -70,6 +75,9 @@ test_that('Multivariate model fitting', {
 # ------------------------------------------------------------------------------
 
 test_that('Univariate model fitting', {
+  skip_on_cran()
+  skip_if(grepl("development", R.version$status))
+
   expect_error(
     parsnip_spls_uni <-
       plsmod::pls(num_comp = 3, predictor_prop = 1) %>%
