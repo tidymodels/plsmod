@@ -14,8 +14,8 @@ y_te <- meats[ for_test, c("water", "fat", "protein")]
 x_tr <- meats[-for_test, 1:100]
 x_te <- meats[ for_test, 1:100]
 
-multi_model  <- mixOmics::spls(x_tr, y_tr, ncomp = 3, keepX = rep(100, 100))
-uni_model  <- mixOmics::spls(x_tr, y_tr[[1]], ncomp = 3, keepX = rep(100, 100))
+multi_model  <- mixOmics::spls(x_tr, y_tr, ncomp = 3, keepX = rep(100, 3))
+uni_model  <- mixOmics::spls(x_tr, y_tr[[1]], ncomp = 3, keepX = rep(100, 3))
 
 # ------------------------------------------------------------------------------
 

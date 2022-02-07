@@ -15,7 +15,7 @@ x_vars <- c("bill_length_mm", "bill_depth_mm", "flipper_length_mm", "body_mass_g
 x_tr <- penguins[-for_test, x_vars]
 x_te <- penguins[ for_test, x_vars]
 
-uni_model  <- mixOmics::splsda(x_tr, y_tr, ncomp = 3, keepX = rep(2, 4))
+uni_model  <- mixOmics::splsda(x_tr, y_tr, ncomp = 3, keepX = rep(2, 3))
 
 # ------------------------------------------------------------------------------
 
