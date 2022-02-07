@@ -40,11 +40,4 @@ mv_meats <-
   set_mode("regression") \%>\%
   fit_xy(x = meats[-(1:5), 1:100], y = meats[-(1:5), 101:103])
 
-pred_vals <- multi_predict(mv_meats, meats[1:5, 1:100], num_comp = 1:10)
-# Predictions over components nested within sample rows
-pred_vals
-
-# For first sample:
-pred_vals$.pred[[1]]
-
 }
