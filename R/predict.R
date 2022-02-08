@@ -144,21 +144,6 @@ multi_class_probs <- function(object, new_data, comps = NULL) {
 #' @param ... Not currently used.
 #' @export
 #' @rdname multi_predict
-#' @examples
-#' data(meats, package = "modeldata")
-#'
-#' mv_meats <-
-#'   pls(num_comp = 20) %>%
-#'   set_engine("mixOmics") %>%
-#'   set_mode("regression") %>%
-#'   fit_xy(x = meats[-(1:5), 1:100], y = meats[-(1:5), 101:103])
-#'
-#' pred_vals <- multi_predict(mv_meats, meats[1:5, 1:100], num_comp = 1:10)
-#' # Predictions over components nested within sample rows
-#' pred_vals
-#'
-#' # For first sample:
-#' pred_vals$.pred[[1]]
 #'
 multi_predict._mixo_pls <-
   function(object, new_data, num_comp = NULL, type = NULL, ...) {

@@ -1,10 +1,8 @@
 context("spls classification models")
 
-library(mixOmics)
-library(plsmod)
 library(tibble)
 library(modeldata)
-
+library(mixOmics)
 data("penguins")
 penguins <- na.omit(penguins)
 
@@ -17,7 +15,7 @@ x_vars <- c("bill_length_mm", "bill_depth_mm", "flipper_length_mm", "body_mass_g
 x_tr <- penguins[-for_test, x_vars]
 x_te <- penguins[ for_test, x_vars]
 
-uni_model  <- mixOmics::splsda(x_tr, y_tr, ncomp = 3, keepX = rep(2, 4))
+uni_model  <- mixOmics::splsda(x_tr, y_tr, ncomp = 3, keepX = rep(2, 3))
 
 # ------------------------------------------------------------------------------
 
@@ -30,6 +28,11 @@ pls_spec <-
 # Model fitting tests
 
 test_that('classification model fitting', {
+  # Failures on r-devel are upstream in mixOmics. See
+  # https://github.com/mixOmicsTeam/mixOmics/issues/162
+  skip_on_cran()
+  skip_if(grepl("development", R.version$status))
+
   expect_error(
     parsnip_spls_da <-
       parsnip::pls(num_comp = 3, predictor_prop = 0.5) %>%
