@@ -1,10 +1,8 @@
 context("spls regression models")
 
-library(mixOmics)
-library(plsmod)
 library(tibble)
 library(modeldata)
-
+library(mixOmics)
 data(meats)
 
 ## -----------------------------------------------------------------------------
@@ -16,12 +14,17 @@ y_te <- meats[ for_test, c("water", "fat", "protein")]
 x_tr <- meats[-for_test, 1:100]
 x_te <- meats[ for_test, 1:100]
 
-multi_model  <- mixOmics::spls(x_tr, y_tr, ncomp = 3, keepX = rep(100, 100))
-uni_model  <- mixOmics::spls(x_tr, y_tr[[1]], ncomp = 3, keepX = rep(100, 100))
+multi_model  <- mixOmics::spls(x_tr, y_tr, ncomp = 3, keepX = rep(100, 3))
+uni_model  <- mixOmics::spls(x_tr, y_tr[[1]], ncomp = 3, keepX = rep(100, 3))
 
 # ------------------------------------------------------------------------------
 
 test_that('Multivariate model fitting', {
+  # Failures on r-devel are upstream in mixOmics. See
+  # https://github.com/mixOmicsTeam/mixOmics/issues/162
+  skip_on_cran()
+  skip_if(grepl("development", R.version$status))
+
   expect_error(
     parsnip_spls_multi <-
       parsnip::pls(num_comp = 3, predictor_prop = 1) %>%
@@ -72,6 +75,9 @@ test_that('Multivariate model fitting', {
 # ------------------------------------------------------------------------------
 
 test_that('Univariate model fitting', {
+  skip_on_cran()
+  skip_if(grepl("development", R.version$status))
+
   expect_error(
     parsnip_spls_uni <-
       parsnip::pls(num_comp = 3, predictor_prop = 1) %>%
