@@ -11,7 +11,8 @@ Description: Bindings for additional regression models for use with the
     models for regression and classification (Rohart et al (2017)
     <doi:10.1371/journal.pcbi.1005752>).
 License: MIT + file LICENSE
-URL: https://plsmod.tidymodels.org, https://github.com/tidymodels/plsmod
+URL: https://plsmod.tidymodels.org,
+    https://github.com/tidymodels/plsmod
 BugReports: https://github.com/tidymodels/plsmod/issues
 Depends: 
     parsnip (>= 0.1.3.9000)
