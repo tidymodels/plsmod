@@ -1,10 +1,8 @@
 context("pls classification models")
 
-library(mixOmics)
-library(plsmod)
 library(tibble)
 library(modeldata)
-
+library(mixOmics)
 data("penguins")
 penguins <- na.omit(penguins)
 
@@ -29,6 +27,11 @@ pls_spec <-
 # ------------------------------------------------------------------------------
 
 test_that('classification model fitting', {
+  # Failures on r-devel are upstream in mixOmics. See
+  # https://github.com/mixOmicsTeam/mixOmics/issues/162
+  skip_on_cran()
+  skip_if(grepl("development", R.version$status))
+
   expect_error(
     parsnip_pls_da <-
       parsnip::pls(num_comp = 3) %>%
@@ -119,20 +122,4 @@ test_that('classification model fitting', {
     as.data.frame(mo_pls_pred_9)
   )
 
-})
-
-test_that('mode specific package dependencies', {
-  expect_identical(
-    get_from_env(paste0("pls", "_pkgs")) %>%
-      dplyr::filter(engine == "mixOmics", mode == "classification") %>%
-      dplyr::pull(pkg),
-    list(c("mixOmics", "plsmod"))
-  )
-
-  expect_identical(
-    get_from_env(paste0("pls", "_pkgs")) %>%
-      dplyr::filter(engine == "mixOmics", mode == "regression") %>%
-      dplyr::pull(pkg),
-    list(c("mixOmics", "plsmod"))
-  )
 })
