@@ -1,4 +1,4 @@
-# plsmod (development version)
+# plsmod 0.2.0
 
 * Model definition functions (e.g. `pls()`) were moved to the parsnip package.
 
