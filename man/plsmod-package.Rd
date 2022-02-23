@@ -107,6 +107,7 @@ The \code{pls()} function can also be used with categorical outcomes.
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://plsmod.tidymodels.org}
   \item \url{https://github.com/tidymodels/plsmod}
   \item Report bugs at \url{https://github.com/tidymodels/plsmod/issues}
 }
