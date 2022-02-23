@@ -1,5 +1,7 @@
 # plsmod (development version)
 
+* Model definition functions (e.g. `pls()`) were moved to the parsnip package.
+
 # plsmod 0.1.2
 
  * Release to stop CRAN failures on r-devel from mixOmics. 
