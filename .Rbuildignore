@@ -10,3 +10,4 @@
 ^\.github$
 ^\.covrignore$
 ^depends\.Rds$
+^vignettes/articles$
