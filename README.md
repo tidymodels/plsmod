@@ -37,7 +37,7 @@ And the development version from [GitHub](https://github.com/) with:
 devtools::install_github("tidymodels/plsmod")
 ```
 
-## Avaliable Engines
+## Available Engines
 
 The plsmod package provides engines for the models in the following
 table.
