@@ -12,12 +12,12 @@ y_te <- meats[ for_test, c("water", "fat", "protein")]
 x_tr <- meats[-for_test, 1:100]
 x_te <- meats[ for_test, 1:100]
 
-multi_model  <- mixOmics::spls(x_tr, y_tr, ncomp = 3, keepX = rep(100, 3))
-uni_model  <- mixOmics::spls(x_tr, y_tr[[1]], ncomp = 3, keepX = rep(100, 3))
+multi_model <- mixOmics::spls(x_tr, y_tr, ncomp = 3, keepX = rep(100, 3))
+uni_model <- mixOmics::spls(x_tr, y_tr[[1]], ncomp = 3, keepX = rep(100, 3))
 
 # ------------------------------------------------------------------------------
 
-test_that('Multivariate model fitting', {
+test_that("Multivariate model fitting", {
   # Failures on r-devel are upstream in mixOmics. See
   # https://github.com/mixOmicsTeam/mixOmics/issues/162
   skip_on_cran()
@@ -39,7 +39,7 @@ test_that('Multivariate model fitting', {
     regexp = NA
   )
 
-  mo_spls_pred <- predict(multi_model, x_te)$predict[,,3]
+  mo_spls_pred <- predict(multi_model, x_te)$predict[, , 3]
   mo_spls_pred <- as_tibble(mo_spls_pred)
   names(mo_spls_pred) <- paste0(".pred_", names(mo_spls_pred))
 
@@ -57,22 +57,22 @@ test_that('Multivariate model fitting', {
   expect_equal(nrow(parsnip_spls_multi_pred_num$.pred[[1]]), 2)
   expect_equal(
     names(parsnip_spls_multi_pred_num$.pred[[1]]),
-    c('num_comp', '.pred_water', '.pred_fat', '.pred_protein')
+    c("num_comp", ".pred_water", ".pred_fat", ".pred_protein")
   )
 
-  mo_spls_pred_9 <- t(predict(multi_model, x_te)$predict[9,,1:2])
+  mo_spls_pred_9 <- t(predict(multi_model, x_te)$predict[9, , 1:2])
   mo_spls_pred_9 <- as_tibble(mo_spls_pred_9)
   names(mo_spls_pred_9) <- paste0(".pred_", names(mo_spls_pred_9))
 
   expect_equivalent(
-    as.data.frame(parsnip_spls_multi_pred_num$.pred[[9]][,-1]),
+    as.data.frame(parsnip_spls_multi_pred_num$.pred[[9]][, -1]),
     as.data.frame(mo_spls_pred_9)
   )
 })
 
 # ------------------------------------------------------------------------------
 
-test_that('Univariate model fitting', {
+test_that("Univariate model fitting", {
   skip_on_cran()
   skip_if(grepl("development", R.version$status))
 
@@ -92,7 +92,7 @@ test_that('Univariate model fitting', {
     regexp = NA
   )
 
-  mo_spls_pred <- predict(uni_model, x_te)$predict[,,3]
+  mo_spls_pred <- predict(uni_model, x_te)$predict[, , 3]
   mo_spls_pred <- as_tibble(mo_spls_pred)
   names(mo_spls_pred) <- ".pred"
 
@@ -110,15 +110,14 @@ test_that('Univariate model fitting', {
   expect_equal(nrow(parsnip_spls_multi_pred_num$.pred[[1]]), 2)
   expect_equal(
     names(parsnip_spls_multi_pred_num$.pred[[1]]),
-    c('num_comp', '.pred')
+    c("num_comp", ".pred")
   )
 
-  mo_spls_pred_9 <- predict(uni_model, x_te)$predict[9,,1:2]
+  mo_spls_pred_9 <- predict(uni_model, x_te)$predict[9, , 1:2]
   mo_spls_pred_9 <- tibble(.pred = mo_spls_pred_9)
 
   expect_equivalent(
-    as.data.frame(parsnip_spls_multi_pred_num$.pred[[9]][,-1]),
+    as.data.frame(parsnip_spls_multi_pred_num$.pred[[9]][, -1]),
     as.data.frame(mo_spls_pred_9)
   )
 })
-
