@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://plsmod.tidymodels.org/CODE_OF_CONDUCT.html</loc>
+    <loc>https://plsmod.tidymodels.org/dev/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://plsmod.tidymodels.org/LICENSE-text.html</loc>
+    <loc>https://plsmod.tidymodels.org/dev/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://plsmod.tidymodels.org/LICENSE.html</loc>
+    <loc>https://plsmod.tidymodels.org/dev/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://plsmod.tidymodels.org/authors.html</loc>
+    <loc>https://plsmod.tidymodels.org/dev/authors.html</loc>
   </url>
   <url>
-    <loc>https://plsmod.tidymodels.org/index.html</loc>
+    <loc>https://plsmod.tidymodels.org/dev/index.html</loc>
   </url>
   <url>
-    <loc>https://plsmod.tidymodels.org/news/index.html</loc>
+    <loc>https://plsmod.tidymodels.org/dev/news/index.html</loc>
   </url>
   <url>
-    <loc>https://plsmod.tidymodels.org/reference/index.html</loc>
+    <loc>https://plsmod.tidymodels.org/dev/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://plsmod.tidymodels.org/reference/multi_predict.html</loc>
+    <loc>https://plsmod.tidymodels.org/dev/reference/multi_predict.html</loc>
   </url>
   <url>
-    <loc>https://plsmod.tidymodels.org/reference/pls_fit.html</loc>
+    <loc>https://plsmod.tidymodels.org/dev/reference/pls_fit.html</loc>
   </url>
   <url>
-    <loc>https://plsmod.tidymodels.org/reference/plsmod-package.html</loc>
+    <loc>https://plsmod.tidymodels.org/dev/reference/plsmod-package.html</loc>
   </url>
   <url>
-    <loc>https://plsmod.tidymodels.org/reference/reexports.html</loc>
+    <loc>https://plsmod.tidymodels.org/dev/reference/reexports.html</loc>
   </url>
   <url>
-    <loc>https://plsmod.tidymodels.org/reference/tidy.mixo_pls.html</loc>
+    <loc>https://plsmod.tidymodels.org/dev/reference/tidy.mixo_pls.html</loc>
   </url>
 </urlset>
