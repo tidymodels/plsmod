@@ -29,9 +29,10 @@ Suggests:
     covr,
     modeldata,
     spelling,
-    testthat
+    testthat (>= 3.0.0)
 biocViews: mixOmics
 Config/Needs/website: tidyverse/tidytemplate
+Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US
 Roxygen: list(markdown = TRUE)

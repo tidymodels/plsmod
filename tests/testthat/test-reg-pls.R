@@ -1,5 +1,3 @@
-context("pls regression models")
-
 library(tibble)
 library(modeldata)
 library(mixOmics)

@@ -1,5 +1,3 @@
-context("spls classification models")
-
 library(tibble)
 library(modeldata)
 library(mixOmics)
