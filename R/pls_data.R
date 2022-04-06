@@ -100,9 +100,11 @@ make_pls_mixOmics <- function() {
       post = NULL,
       func = c(fun = "predict"),
       args =
-        list(object = quote(object$fit),
-             newdata = quote(new_data),
-             dist = "mahalanobis.dist")
+        list(
+          object = quote(object$fit),
+          newdata = quote(new_data),
+          dist = "mahalanobis.dist"
+        )
     )
   )
 
@@ -152,9 +154,11 @@ make_pls_mixOmics <- function() {
       post = NULL,
       func = c(fun = "predict"),
       args =
-        list(object = quote(object$fit),
-             newdata = quote(new_data),
-             dist = "mahalanobis.dist")
+        list(
+          object = quote(object$fit),
+          newdata = quote(new_data),
+          dist = "mahalanobis.dist"
+        )
     )
   )
 }
