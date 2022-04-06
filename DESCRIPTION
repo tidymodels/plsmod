@@ -4,18 +4,18 @@ Version: 0.2.0.9000
 Authors@R: c(
     person("Max", "Kuhn", , "max@rstudio.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-2402-136X")),
-    person("RStudio", role = "cph")
+    person("RStudio", role = c("cph", "fnd"))
   )
 Description: Bindings for additional regression models for use with the
     'parsnip' package, including ordinary and spare partial least squares
     models for regression and classification (Rohart et al (2017)
     <doi:10.1371/journal.pcbi.1005752>).
 License: MIT + file LICENSE
-URL: https://plsmod.tidymodels.org,
-    https://github.com/tidymodels/plsmod
+URL: https://plsmod.tidymodels.org, https://github.com/tidymodels/plsmod
 BugReports: https://github.com/tidymodels/plsmod/issues
 Depends: 
-    parsnip (>= 0.2.0)
+    parsnip (>= 0.2.0),
+    R (>= 3.4)
 Imports: 
     dplyr,
     generics,
@@ -30,9 +30,8 @@ Suggests:
     modeldata,
     spelling,
     testthat
-Config/Needs/website: 
-    tidyverse/tidytemplate
 biocViews: mixOmics
+Config/Needs/website: tidyverse/tidytemplate
 Encoding: UTF-8
 Language: en-US
 Roxygen: list(markdown = TRUE)
