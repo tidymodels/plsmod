@@ -12,6 +12,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://www.r-pkg.org/badges/version/plsmod)](https://CRAN.R-project.org/package=plsmod)
 [![Codecov test
 coverage](https://codecov.io/gh/tidymodels/plsmod/branch/main/graph/badge.svg)](https://app.codecov.io/gh/tidymodels/plsmod?branch=main)
+[![R-CMD-check](https://github.com/tidymodels/plsmod/workflows/R-CMD-check/badge.svg)](https://github.com/tidymodels/plsmod/actions)
 <!-- badges: end -->
 
 This package is a helper package for
