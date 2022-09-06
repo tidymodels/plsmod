@@ -18,7 +18,7 @@ tidy.mixo_pls <- function(x, ...) {
   loads <-
     tidyr::pivot_longer(
       loads,
-      cols = c(-term,-type),
+      cols = c(-term, -type),
       names_to = "component",
       values_to = "value"
     )
@@ -42,7 +42,7 @@ tidy.mixo_spls <- function(x, ...) {
   loads <-
     tidyr::pivot_longer(
       loads,
-      cols = c(-term,-type),
+      cols = c(-term, -type),
       names_to = "component",
       values_to = "value"
     )
