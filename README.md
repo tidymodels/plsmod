@@ -8,7 +8,7 @@
 [![R build
 status](https://github.com/tidymodels/plsmod/workflows/R-CMD-check/badge.svg)](https://github.com/tidymodels/plsmod/actions)
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/plsmod)](https://CRAN.R-project.org/package=plsmod)
 [![Codecov test
@@ -55,13 +55,13 @@ By contributing to this project, you agree to abide by its terms.
 
 -   For questions and discussions about tidymodels packages, modeling,
     and machine learning, please [post on RStudio
-    Community](https://rstd.io/tidymodels-community).
+    Community](https://community.rstudio.com/new-topic?category_id=15&tags=tidymodels,question).
 
 -   If you think you have encountered a bug, please [submit an
     issue](https://github.com/tidymodels/plsmod/issues).
 
 -   Either way, learn how to create and share a
-    [reprex](https://rstd.io/reprex) (a minimal, reproducible example),
+    [reprex](https://reprex.tidyverse.org/articles/articles/learn-reprex.html) (a minimal, reproducible example),
     to clearly communicate about your code.
 
 -   Check out further details on [contributing guidelines for tidymodels

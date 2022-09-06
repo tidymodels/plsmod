@@ -14,7 +14,9 @@ The model function works with the tidymodels infrastructure so that the model
 can be resampled, tuned, tided, etc.
 }
 \section{Examples}{
-For regression, let’s use the Tecator data in the modeldata package:\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(tidymodels)
+For regression, let’s use the Tecator data in the modeldata package:
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{library(tidymodels)
 library(plsmod)
 tidymodels_prefer()
 theme_set(theme_bw())
@@ -27,23 +29,31 @@ Note that using \code{tidymodels_prefer()} will resulting getting
 \code{pls()}.
 
 Although plsmod can fit multivariate models, we’ll concentration on a
-univariate model that predicts the percentage of protein in the samples.\if{html}{\out{<div class="sourceCode r">}}\preformatted{meats <- meats \%>\% select(-water, -fat)
+univariate model that predicts the percentage of protein in the samples.
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{meats <- meats \%>\% select(-water, -fat)
 }\if{html}{\out{</div>}}
 
 We define a sparse PLS model by setting the \code{predictor_prop} argument to
 a value less than one. This allows the model fitting process to set
-certain loadings to zero via regularization.\if{html}{\out{<div class="sourceCode r">}}\preformatted{sparse_pls_spec <- 
+certain loadings to zero via regularization.
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{sparse_pls_spec <- 
   pls(num_comp = 10, predictor_prop = 1/3) \%>\% 
   set_engine("mixOmics") \%>\% 
   set_mode("regression")
 }\if{html}{\out{</div>}}
 
 The model is fit either with a formula or by passing the predictors and
-outcomes separately:\if{html}{\out{<div class="sourceCode r">}}\preformatted{form_fit <- 
+outcomes separately:
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{form_fit <- 
   sparse_pls_spec \%>\% 
   fit(protein ~ ., data = meats)
 form_fit
-}\if{html}{\out{</div>}}\preformatted{## parsnip model object
+}\if{html}{\out{</div>}}
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{## parsnip model object
 ## 
 ## 
 ## Call:
@@ -69,11 +79,15 @@ form_fit
 ##  Functions to visualise variables: 
 ##  -------------------- 
 ##  plotVar, plotLoadings, network, cim
-}\if{html}{\out{<div class="sourceCode r">}}\preformatted{# or 
+}\if{html}{\out{</div>}}
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{# or 
 
 sparse_pls_spec \%>\% 
   fit_xy(x = meats \%>\% select(-protein), y = meats$protein)
-}\if{html}{\out{</div>}}\preformatted{## parsnip model object
+}\if{html}{\out{</div>}}
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{## parsnip model object
 ## 
 ## 
 ## Call:
@@ -99,7 +113,7 @@ sparse_pls_spec \%>\%
 ##  Functions to visualise variables: 
 ##  -------------------- 
 ##  plotVar, plotLoadings, network, cim
-}
+}\if{html}{\out{</div>}}
 
 The \code{pls()} function can also be used with categorical outcomes.
 }
@@ -107,6 +121,7 @@ The \code{pls()} function can also be used with categorical outcomes.
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://plsmod.tidymodels.org}
   \item \url{https://github.com/tidymodels/plsmod}
   \item Report bugs at \url{https://github.com/tidymodels/plsmod/issues}
 }
