@@ -12,6 +12,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://www.r-pkg.org/badges/version/plsmod)](https://CRAN.R-project.org/package=plsmod)
 [![Codecov test
 coverage](https://codecov.io/gh/tidymodels/plsmod/branch/main/graph/badge.svg)](https://app.codecov.io/gh/tidymodels/plsmod?branch=main)
+[![R-CMD-check](https://github.com/tidymodels/plsmod/workflows/R-CMD-check/badge.svg)](https://github.com/tidymodels/plsmod/actions)
 <!-- badges: end -->
 
 This package is a helper package for
@@ -59,9 +60,9 @@ By contributing to this project, you agree to abide by its terms.
     issue](https://github.com/tidymodels/plsmod/issues).
 
 -   Either way, learn how to create and share a
-    [reprex](https://reprex.tidyverse.org/articles/articles/learn-reprex.html) (a minimal, reproducible example),
-    to clearly communicate about your code.
-
+    [reprex](https://reprex.tidyverse.org/articles/articles/learn-reprex.html)
+    (a minimal, reproducible example), to clearly communicate about your
+    code.
 
 -   Check out further details on [contributing guidelines for tidymodels
     packages](https://www.tidymodels.org/contribute/) and [how to get
