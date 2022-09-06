@@ -1,3 +1,5 @@
+# plsmod (development version)
+
 # plsmod 1.0.0
 
 * Small release to correct HTML tags for CRAN.
