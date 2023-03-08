@@ -1,35 +1,17 @@
-#' @importFrom rlang enquo
-#' @importFrom purrr map_lgl
-#' @importFrom tibble is_tibble as_tibble
+## To avoid dependency issues
 #' @importFrom parsnip set_new_model
-#' @importFrom stats predict loadings
-#' @importFrom mixOmics spls
+NULL
 
-# ------------------------------------------------------------------------------
+# nocov start
 
-#' @importFrom generics tidy
-#' @export
-generics::tidy
+# Global vars ------------------------------------------------------------------
 
-#' @importFrom magrittr %>%
-#' @export
-magrittr::`%>%`
-
-#' @importFrom parsnip multi_predict
-#' @export
-parsnip::multi_predict
-
-# ------------------------------------------------------------------------------
-
-#' @importFrom utils globalVariables
 utils::globalVariables(
   c("component", "loadings", "term", "type", "value")
 )
 
-# ------------------------------------------------------------------------------
+# s3_register ------------------------------------------------------------------
 
-
-# nocov start
 s3_register <- function(generic, class, method = NULL) {
   stopifnot(is.character(generic), length(generic) == 1)
   stopifnot(is.character(class), length(class) == 1)
@@ -88,9 +70,7 @@ s3_register <- function(generic, class, method = NULL) {
   invisible()
 }
 
-# nocov end
-
-## -----------------------------------------------------------------------------
+## .onload ---------------------------------------------------------------------
 
 # The functions below define the model information. These access the model
 # environment inside of parsnip so they have to be executed once parsnip has
@@ -105,3 +85,5 @@ s3_register <- function(generic, class, method = NULL) {
   s3_register("parsnip::multi_predict", "_mixo_spls")
   s3_register("parsnip::multi_predict", "_mixo_splsda")
 }
+
+# nocov end
