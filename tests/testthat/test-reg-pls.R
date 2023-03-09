@@ -47,7 +47,7 @@ test_that("Multivariate model fitting", {
   )
 
   mo_pls_pred <- predict(multi_model, x_te)$predict[, , 3]
-  mo_pls_pred <- as_tibble(mo_pls_pred)
+  mo_pls_pred <- tibble::as_tibble(mo_pls_pred)
   names(mo_pls_pred) <- paste0(".pred_", names(mo_pls_pred))
 
   expect_equivalent(as.data.frame(parsnip_pls_multi_num), as.data.frame(mo_pls_pred))
@@ -68,7 +68,7 @@ test_that("Multivariate model fitting", {
   )
 
   mo_pls_pred_9 <- t(predict(multi_model, x_te)$predict[9, , 1:2])
-  mo_pls_pred_9 <- as_tibble(mo_pls_pred_9)
+  mo_pls_pred_9 <- tibble::as_tibble(mo_pls_pred_9)
   names(mo_pls_pred_9) <- paste0(".pred_", names(mo_pls_pred_9))
 
   expect_equivalent(
@@ -100,7 +100,7 @@ test_that("Univariate model fitting", {
   )
 
   mo_pls_pred <- predict(uni_model, x_te)$predict[, , 3]
-  mo_pls_pred <- as_tibble(mo_pls_pred)
+  mo_pls_pred <- tibble::as_tibble(mo_pls_pred)
   names(mo_pls_pred) <- ".pred"
 
   expect_equivalent(as.data.frame(parsnip_pls_uni_num), as.data.frame(mo_pls_pred))
