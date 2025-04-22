@@ -1,5 +1,7 @@
 # plsmod (development version)
 
+* Transition from the magrittr pipe to the base R pipe.
+
 # plsmod 1.0.0
 
 * Small release to correct HTML tags for CRAN.

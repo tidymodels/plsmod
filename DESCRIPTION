@@ -15,11 +15,10 @@ URL: https://plsmod.tidymodels.org, https://github.com/tidymodels/plsmod
 BugReports: https://github.com/tidymodels/plsmod/issues
 Depends: 
     parsnip (>= 0.2.0),
-    R (>= 3.4)
+    R (>= 4.1)
 Imports: 
     dplyr,
     generics,
-    magrittr,
     mixOmics,
     purrr,
     rlang,

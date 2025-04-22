@@ -10,7 +10,7 @@ tidy.mixo_pls <- function(x, ...) {
   loads <- loadings(x)
   nms <- purrr::map(loads, rownames)
   loads <- purrr::map(loads, tibble::as_tibble)
-  loads <- purrr::map2(loads, nms, ~ .x %>% mutate(term = .y))
+  loads <- purrr::map2(loads, nms, ~ .x |> mutate(term = .y))
   loads$X$type <- "predictors"
   loads$Y$type <- "outcomes"
 
@@ -34,7 +34,7 @@ tidy.mixo_spls <- function(x, ...) {
   loads <- loadings(x)
   nms <- purrr::map(loads, rownames)
   loads <- purrr::map(loads, tibble::as_tibble)
-  loads <- purrr::map2(loads, nms, ~ .x %>% mutate(term = .y))
+  loads <- purrr::map2(loads, nms, ~ .x |> mutate(term = .y))
   loads$X$type <- "predictors"
   loads$Y$type <- "outcomes"
 

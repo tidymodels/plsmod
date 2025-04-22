@@ -9,17 +9,17 @@ test_that("mixOmics classification model fitting", {
   # ------------------------------------------------------------------------------
 
   pls_spec <-
-    parsnip::pls(num_comp = 3, predictor_prop = 0.5) %>%
-    set_engine("mixOmics") %>%
+    parsnip::pls(num_comp = 3, predictor_prop = 0.5) |>
+    set_engine("mixOmics") |>
     set_mode("classification")
 
   # ------------------------------------------------------------------------------
 
   expect_error(
     parsnip_spls_da <-
-      parsnip::pls(num_comp = 3, predictor_prop = 0.5) %>%
-      set_engine("mixOmics") %>%
-      set_mode("classification") %>%
+      parsnip::pls(num_comp = 3, predictor_prop = 0.5) |>
+      set_engine("mixOmics") |>
+      set_mode("classification") |>
       fit_xy(x = pen_x_tr, y = pen_y_tr),
     regexp = NA
   )
