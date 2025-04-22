@@ -24,3 +24,5 @@ if (rlang::is_installed("modeldata")) {
   meats_x_tr <- meats[-meats_for_test, 1:100]
   meats_x_te <- meats[ meats_for_test, 1:100]
 }
+
+print("yey")

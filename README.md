@@ -41,11 +41,6 @@ pak::pak("tidymodels/plsmod")
 The plsmod package provides engines for the models in the following
 table.
 
-| model | engine   | mode           |
-|:------|:---------|:---------------|
-| pls   | mixOmics | classification |
-| pls   | mixOmics | regression     |
-
 ## Contributing
 
 This project is released with a [Contributor Code of

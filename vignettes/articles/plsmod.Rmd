@@ -25,15 +25,15 @@ Note that using `tidymodels_prefer()` will resulting getting `parsnip::pls()` in
 Although plsmod can fit multivariate models, we'll concentration on a univariate model that predicts the percentage of protein in the samples.  
 
 ```{r}
-meats <- meats %>% select(-water, -fat)
+meats <- meats |> select(-water, -fat)
 ```
 
 We define a sparse PLS model by setting the `predictor_prop` argument to a value less than one. This allows the model fitting process to set certain loadings to zero via regularization. 
 
 ```{r}
 sparse_pls_spec <- 
-  pls(num_comp = 10, predictor_prop = 1 / 3) %>% 
-  set_engine("mixOmics") %>% 
+  pls(num_comp = 10, predictor_prop = 1 / 3) |> 
+  set_engine("mixOmics") |> 
   set_mode("regression")
 ```
 
@@ -41,14 +41,14 @@ The model is fit either with a formula or by passing the predictors and outcomes
 
 ```{r}
 form_fit <- 
-  sparse_pls_spec %>% 
+  sparse_pls_spec |> 
   fit(protein ~ ., data = meats)
 form_fit
 
 # or 
 
-sparse_pls_spec %>% 
-  fit_xy(x = meats %>% select(-protein), y = meats$protein)
+sparse_pls_spec |> 
+  fit_xy(x = meats |> select(-protein), y = meats$protein)
 ```
 
 The `pls()` function can also be used with categorical outcomes, provided that the outcome column is an R factor vector. 

@@ -9,17 +9,17 @@ test_that("mixOmics multivariate model fitting", {
   # ------------------------------------------------------------------------------
 
   pls_spec <-
-    parsnip::pls(num_comp = 3) %>%
-    set_engine("mixOmics") %>%
+    parsnip::pls(num_comp = 3) |>
+    set_engine("mixOmics") |>
     set_mode("regression")
 
   # ------------------------------------------------------------------------------
 
   expect_error(
     parsnip_pls_multi <-
-      parsnip::pls(num_comp = 3) %>%
-      set_engine("mixOmics") %>%
-      set_mode("regression") %>%
+      parsnip::pls(num_comp = 3) |>
+      set_engine("mixOmics") |>
+      set_mode("regression") |>
       fit_xy(x = meats_x_tr, y = meats_y_tr),
     regexp = NA
   )
@@ -81,9 +81,9 @@ test_that("mixOmics univariate model fitting", {
 
   expect_error(
     parsnip_pls_uni <-
-      parsnip::pls(num_comp = 3) %>%
-      set_engine("mixOmics") %>%
-      set_mode("regression") %>%
+      parsnip::pls(num_comp = 3) |>
+      set_engine("mixOmics") |>
+      set_mode("regression") |>
       fit_xy(x = meats_x_tr, y = meats_y_tr[[1]]),
     regexp = NA
   )
@@ -139,9 +139,9 @@ test_that("mixOmics dummy variable encodings", {
   penguins <- na.omit(penguins)
   expect_error(
     parsnip_pls_multi <-
-      parsnip::pls(num_comp = 3) %>%
-      set_engine("mixOmics") %>%
-      set_mode("regression") %>%
+      parsnip::pls(num_comp = 3) |>
+      set_engine("mixOmics") |>
+      set_mode("regression") |>
       fit(body_mass_g ~ ., data = penguins),
     regexp = NA
   )

@@ -73,7 +73,7 @@ multi_numeric_preds <- function(object, new_data, comps = NULL) {
   tmp_pred <-
     purrr::map(
       tmp_pred,
-      ~ dplyr::bind_cols(tmp_grid, tibble::as_tibble(.x) %>% setNames(new_nms))
+      ~ dplyr::bind_cols(tmp_grid, tibble::as_tibble(.x) |> setNames(new_nms))
     )
   tibble::tibble(.pred = tmp_pred)
 }
@@ -129,7 +129,7 @@ multi_class_probs <- function(object, new_data, comps = NULL) {
   tmp_pred <-
     purrr::map(
       tmp_pred,
-      ~ dplyr::bind_cols(tmp_grid, tibble::as_tibble(.x) %>% setNames(new_nms))
+      ~ dplyr::bind_cols(tmp_grid, tibble::as_tibble(.x) |> setNames(new_nms))
     )
   tibble::tibble(.pred = tmp_pred)
 }

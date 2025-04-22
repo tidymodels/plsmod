@@ -4,7 +4,6 @@
 \name{reexports}
 \alias{reexports}
 \alias{tidy}
-\alias{\%>\%}
 \alias{multi_predict}
 \title{Objects exported from other packages}
 \keyword{internal}
@@ -14,8 +13,6 @@ below to see their documentation.
 
 \describe{
   \item{generics}{\code{\link[generics]{tidy}}}
-
-  \item{magrittr}{\code{\link[magrittr:pipe]{\%>\%}}}
 
   \item{parsnip}{\code{\link[parsnip]{multi_predict}}}
 }}
