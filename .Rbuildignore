@@ -11,3 +11,5 @@
 ^\.covrignore$
 ^depends\.Rds$
 ^vignettes/articles$
+^[\.]?air\.toml$
+^\.vscode$

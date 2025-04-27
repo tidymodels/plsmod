@@ -81,12 +81,11 @@ make_pls_mixOmics <- function() {
       pre = NULL,
       post = single_numeric_preds,
       func = c(fun = "predict"),
-      args =
-        list(
-          object = quote(object$fit),
-          newdata = quote(new_data),
-          dist = "mahalanobis.dist"
-        )
+      args = list(
+        object = quote(object$fit),
+        newdata = quote(new_data),
+        dist = "mahalanobis.dist"
+      )
     )
   )
 
@@ -99,12 +98,11 @@ make_pls_mixOmics <- function() {
       pre = NULL,
       post = NULL,
       func = c(fun = "predict"),
-      args =
-        list(
-          object = quote(object$fit),
-          newdata = quote(new_data),
-          dist = "mahalanobis.dist"
-        )
+      args = list(
+        object = quote(object$fit),
+        newdata = quote(new_data),
+        dist = "mahalanobis.dist"
+      )
     )
   )
 
@@ -117,12 +115,11 @@ make_pls_mixOmics <- function() {
       pre = NULL,
       post = single_class_preds,
       func = c(fun = "predict"),
-      args =
-        list(
-          object = quote(object$fit),
-          newdata = quote(new_data),
-          dist = "mahalanobis.dist"
-        )
+      args = list(
+        object = quote(object$fit),
+        newdata = quote(new_data),
+        dist = "mahalanobis.dist"
+      )
     )
   )
 
@@ -135,12 +132,11 @@ make_pls_mixOmics <- function() {
       pre = NULL,
       post = single_prob_preds,
       func = c(fun = "predict"),
-      args =
-        list(
-          object = quote(object$fit),
-          newdata = quote(new_data),
-          dist = "mahalanobis.dist"
-        )
+      args = list(
+        object = quote(object$fit),
+        newdata = quote(new_data),
+        dist = "mahalanobis.dist"
+      )
     )
   )
 
@@ -153,12 +149,11 @@ make_pls_mixOmics <- function() {
       pre = NULL,
       post = NULL,
       func = c(fun = "predict"),
-      args =
-        list(
-          object = quote(object$fit),
-          newdata = quote(new_data),
-          dist = "mahalanobis.dist"
-        )
+      args = list(
+        object = quote(object$fit),
+        newdata = quote(new_data),
+        dist = "mahalanobis.dist"
+      )
     )
   )
 }

@@ -5,7 +5,7 @@ single_numeric_preds <- function(results, object) {
   n <- dim(tmp_pred)[1]
   p <- dim(tmp_pred)[2]
   ncomp <- dim(tmp_pred)[3]
-  tmp_pred <- tmp_pred[, , ncomp]
+  tmp_pred <- tmp_pred[,, ncomp]
   if (p == 1) {
     res <- tibble::tibble(.pred = unname(tmp_pred))
   } else {
@@ -34,7 +34,7 @@ single_prob_preds <- function(results, object) {
   n <- dim(tmp_pred)[1]
   p <- dim(tmp_pred)[2]
   ncomp <- dim(tmp_pred)[3]
-  tmp_pred <- tmp_pred[, , ncomp]
+  tmp_pred <- tmp_pred[,, ncomp]
   tmp_pred <- apply(tmp_pred, 1, smax)
   tmp_pred <- tibble::as_tibble(t(tmp_pred))
   names(tmp_pred) <- paste0(".pred_", names(tmp_pred))
@@ -56,7 +56,7 @@ multi_numeric_preds <- function(object, new_data, comps = NULL) {
   comps <- comps[comps <= q]
   tmp_grid <- tibble::tibble(num_comp = comps)
 
-  tmp_pred <- tmp_pred[, , comps, drop = FALSE]
+  tmp_pred <- tmp_pred[,, comps, drop = FALSE]
 
   if (p > 1) {
     nms <- dimnames(tmp_pred)[[2]]
@@ -116,7 +116,7 @@ multi_class_probs <- function(object, new_data, comps = NULL) {
     comps <- q
   }
   comps <- comps[comps <= q]
-  tmp_pred <- tmp_pred[, , comps, drop = FALSE]
+  tmp_pred <- tmp_pred[,, comps, drop = FALSE]
 
   lvl <- object$lvl
   new_nms <- paste0(".pred_", lvl)
@@ -163,7 +163,6 @@ multi_predict._mixo_pls <-
     }
 
     ## -------------------------------------------------------------------------
-
 
     if (is.null(num_comp)) {
       num_comp <- object$fit$sncomp

@@ -28,7 +28,11 @@ pls_fit <- function(x, y, ncomp = NULL, predictor_prop = 1, ...) {
   predictor_prop <- max(predictor_prop, 1e-05)
   predictor_prop <- min(predictor_prop, 1)
   cuts <- seq(0, p, length.out = p + 1)
-  keepX <- as.integer(cut(predictor_prop * p, breaks = cuts, include.lowest = TRUE))
+  keepX <- as.integer(cut(
+    predictor_prop * p,
+    breaks = cuts,
+    include.lowest = TRUE
+  ))
   keepX <- rep(keepX, ncomp)
 
   if (is.factor(y)) {

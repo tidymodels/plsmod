@@ -27,11 +27,14 @@ test_that("mixOmics multivariate model fitting", {
   expect_equal(parsnip_pls_multi$fit$loadings, multi_model$loadings)
 
   expect_error(
-    parsnip_pls_multi_num <- predict(parsnip_pls_multi, as.data.frame(meats_x_te)),
+    parsnip_pls_multi_num <- predict(
+      parsnip_pls_multi,
+      as.data.frame(meats_x_te)
+    ),
     regexp = NA
   )
 
-  mo_pls_pred <- predict(multi_model, meats_x_te)$predict[, , 3]
+  mo_pls_pred <- predict(multi_model, meats_x_te)$predict[,, 3]
   mo_pls_pred <- tibble::as_tibble(mo_pls_pred)
   names(mo_pls_pred) <- paste0(".pred_", names(mo_pls_pred))
 
@@ -46,7 +49,11 @@ test_that("mixOmics multivariate model fitting", {
 
   expect_error(
     parsnip_pls_multi_pred_num <-
-      multi_predict(parsnip_pls_multi, as.data.frame(meats_x_te), num_comp = 1:2),
+      multi_predict(
+        parsnip_pls_multi,
+        as.data.frame(meats_x_te),
+        num_comp = 1:2
+      ),
     regexp = NA
   )
   expect_equal(nrow(parsnip_pls_multi_pred_num), nrow(meats_x_te))
@@ -95,7 +102,7 @@ test_that("mixOmics univariate model fitting", {
     regexp = NA
   )
 
-  mo_pls_pred <- predict(uni_model, meats_x_te)$predict[, , 3]
+  mo_pls_pred <- predict(uni_model, meats_x_te)$predict[,, 3]
   mo_pls_pred <- tibble::as_tibble(mo_pls_pred)
   names(mo_pls_pred) <- ".pred"
 

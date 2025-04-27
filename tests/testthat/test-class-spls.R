@@ -4,7 +4,12 @@ test_that("mixOmics classification model fitting", {
 
   # ------------------------------------------------------------------------------
 
-  uni_model <- mixOmics::splsda(pen_x_tr, pen_y_tr, ncomp = 3, keepX = rep(2, 3))
+  uni_model <- mixOmics::splsda(
+    pen_x_tr,
+    pen_y_tr,
+    ncomp = 3,
+    keepX = rep(2, 3)
+  )
 
   # ------------------------------------------------------------------------------
 
@@ -39,22 +44,29 @@ test_that("mixOmics classification model fitting", {
   expect_equal(parsnip_spls_da_class[[1]], uni_model_pred)
 
   expect_error(
-    parsnip_spls_da_prob <- predict(parsnip_spls_da, as.data.frame(pen_x_te), type = "prob"),
+    parsnip_spls_da_prob <- predict(
+      parsnip_spls_da,
+      as.data.frame(pen_x_te),
+      type = "prob"
+    ),
     regexp = NA
   )
 
-  uni_model_pred <- predict(uni_model, pen_x_te)$predict[, , 3]
+  uni_model_pred <- predict(uni_model, pen_x_te)$predict[,, 3]
   uni_model_pred <- tibble::as_tibble(uni_model_pred)
   names(uni_model_pred) <- paste0(".pred_", names(uni_model_pred))
 
   expect_equal(names(parsnip_spls_da_class), ".pred_class", ignore_attr = TRUE)
 
-
   # ----------------------------------------------------------------------------
   # multi-predict classes
 
   expect_error(
-    parsnip_spls_da_class_mp <- multi_predict(parsnip_spls_da, as.data.frame(pen_x_te), num_comp = 2:3),
+    parsnip_spls_da_class_mp <- multi_predict(
+      parsnip_spls_da,
+      as.data.frame(pen_x_te),
+      num_comp = 2:3
+    ),
     regexp = NA
   )
   expect_equal(nrow(parsnip_spls_da_class_mp), nrow(pen_x_te))
