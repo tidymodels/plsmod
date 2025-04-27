@@ -15,7 +15,8 @@ show_engines("pls")
 
 For a demonstration of regression modeling, well use the [Tecator data](https://modeldata.tidymodels.org/reference/meats.html) in the modeldata package:
 
-```{r, message=FALSE}
+```{r}
+#| message: false
 library(dplyr)
 data(meats, package = "modeldata")
 ```
