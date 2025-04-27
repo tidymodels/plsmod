@@ -61,11 +61,11 @@ multi_numeric_preds <- function(object, new_data, comps = NULL) {
   if (p > 1) {
     nms <- dimnames(tmp_pred)[[2]]
     new_nms <- paste0(".pred_", nms)
-    tmp_pred <- purrr::map(1:n, ~ t(as.matrix(tmp_pred[.x, , ])))
+    tmp_pred <- purrr::map(1:n, \(.x) t(as.matrix(tmp_pred[.x, , ])))
   } else {
     new_nms <- ".pred"
     tmp_pred <- tmp_pred[, 1, ]
-    tmp_pred <- purrr::map(1:n, ~ data.frame(.pred = tmp_pred[.x, ]))
+    tmp_pred <- purrr::map(1:n, \(.x) data.frame(.pred = tmp_pred[.x, ]))
   }
 
   # Make into list for each sample
@@ -73,7 +73,11 @@ multi_numeric_preds <- function(object, new_data, comps = NULL) {
   tmp_pred <-
     purrr::map(
       tmp_pred,
-      ~ dplyr::bind_cols(tmp_grid, tibble::as_tibble(.x) |> setNames(new_nms))
+      \(.x)
+        dplyr::bind_cols(
+          tmp_grid,
+          tibble::as_tibble(.x) |> stats::setNames(new_nms)
+        )
     )
   tibble::tibble(.pred = tmp_pred)
 }
@@ -99,7 +103,8 @@ multi_class_preds <- function(object, new_data, comps = NULL) {
   tmp_pred <-
     purrr::map(
       tmp_pred,
-      ~ tibble::tibble(num_comp = comps, .pred_class = factor(.x, levels = lvl))
+      \(.x)
+        tibble::tibble(num_comp = comps, .pred_class = factor(.x, levels = lvl))
     )
 
   tibble::tibble(.pred = tmp_pred)
@@ -122,14 +127,18 @@ multi_class_probs <- function(object, new_data, comps = NULL) {
   new_nms <- paste0(".pred_", lvl)
   tmp_grid <- tibble::tibble(num_comp = comps)
   # Make into list for each sample
-  tmp_pred <- purrr::map(1:n, ~ t(as.matrix(tmp_pred[.x, , ])))
+  tmp_pred <- purrr::map(1:n, \(.x) t(as.matrix(tmp_pred[.x, , ])))
   # Normalize to on probability scale
-  tmp_pred <- purrr::map(tmp_pred, ~ t(apply(.x, 1, smax)))
+  tmp_pred <- purrr::map(tmp_pred, \(.x) t(apply(.x, 1, smax)))
 
   tmp_pred <-
     purrr::map(
       tmp_pred,
-      ~ dplyr::bind_cols(tmp_grid, tibble::as_tibble(.x) |> setNames(new_nms))
+      \(.x)
+        dplyr::bind_cols(
+          tmp_grid,
+          tibble::as_tibble(.x) |> stats::setNames(new_nms)
+        )
     )
   tibble::tibble(.pred = tmp_pred)
 }
