@@ -5,7 +5,7 @@ single_numeric_preds <- function(results, object) {
   n <- dim(tmp_pred)[1]
   p <- dim(tmp_pred)[2]
   ncomp <- dim(tmp_pred)[3]
-  tmp_pred <- tmp_pred[, , ncomp]
+  tmp_pred <- tmp_pred[,, ncomp]
   if (p == 1) {
     res <- tibble::tibble(.pred = unname(tmp_pred))
   } else {
@@ -34,7 +34,7 @@ single_prob_preds <- function(results, object) {
   n <- dim(tmp_pred)[1]
   p <- dim(tmp_pred)[2]
   ncomp <- dim(tmp_pred)[3]
-  tmp_pred <- tmp_pred[, , ncomp]
+  tmp_pred <- tmp_pred[,, ncomp]
   tmp_pred <- apply(tmp_pred, 1, smax)
   tmp_pred <- tibble::as_tibble(t(tmp_pred))
   names(tmp_pred) <- paste0(".pred_", names(tmp_pred))
@@ -56,16 +56,16 @@ multi_numeric_preds <- function(object, new_data, comps = NULL) {
   comps <- comps[comps <= q]
   tmp_grid <- tibble::tibble(num_comp = comps)
 
-  tmp_pred <- tmp_pred[, , comps, drop = FALSE]
+  tmp_pred <- tmp_pred[,, comps, drop = FALSE]
 
   if (p > 1) {
     nms <- dimnames(tmp_pred)[[2]]
     new_nms <- paste0(".pred_", nms)
-    tmp_pred <- purrr::map(1:n, ~ t(as.matrix(tmp_pred[.x, , ])))
+    tmp_pred <- purrr::map(1:n, \(.x) t(as.matrix(tmp_pred[.x, , ])))
   } else {
     new_nms <- ".pred"
     tmp_pred <- tmp_pred[, 1, ]
-    tmp_pred <- purrr::map(1:n, ~ data.frame(.pred = tmp_pred[.x, ]))
+    tmp_pred <- purrr::map(1:n, \(.x) data.frame(.pred = tmp_pred[.x, ]))
   }
 
   # Make into list for each sample
@@ -73,7 +73,11 @@ multi_numeric_preds <- function(object, new_data, comps = NULL) {
   tmp_pred <-
     purrr::map(
       tmp_pred,
-      ~ dplyr::bind_cols(tmp_grid, tibble::as_tibble(.x) |> setNames(new_nms))
+      \(.x)
+        dplyr::bind_cols(
+          tmp_grid,
+          tibble::as_tibble(.x) |> stats::setNames(new_nms)
+        )
     )
   tibble::tibble(.pred = tmp_pred)
 }
@@ -99,7 +103,8 @@ multi_class_preds <- function(object, new_data, comps = NULL) {
   tmp_pred <-
     purrr::map(
       tmp_pred,
-      ~ tibble::tibble(num_comp = comps, .pred_class = factor(.x, levels = lvl))
+      \(.x)
+        tibble::tibble(num_comp = comps, .pred_class = factor(.x, levels = lvl))
     )
 
   tibble::tibble(.pred = tmp_pred)
@@ -116,20 +121,24 @@ multi_class_probs <- function(object, new_data, comps = NULL) {
     comps <- q
   }
   comps <- comps[comps <= q]
-  tmp_pred <- tmp_pred[, , comps, drop = FALSE]
+  tmp_pred <- tmp_pred[,, comps, drop = FALSE]
 
   lvl <- object$lvl
   new_nms <- paste0(".pred_", lvl)
   tmp_grid <- tibble::tibble(num_comp = comps)
   # Make into list for each sample
-  tmp_pred <- purrr::map(1:n, ~ t(as.matrix(tmp_pred[.x, , ])))
+  tmp_pred <- purrr::map(1:n, \(.x) t(as.matrix(tmp_pred[.x, , ])))
   # Normalize to on probability scale
-  tmp_pred <- purrr::map(tmp_pred, ~ t(apply(.x, 1, smax)))
+  tmp_pred <- purrr::map(tmp_pred, \(.x) t(apply(.x, 1, smax)))
 
   tmp_pred <-
     purrr::map(
       tmp_pred,
-      ~ dplyr::bind_cols(tmp_grid, tibble::as_tibble(.x) |> setNames(new_nms))
+      \(.x)
+        dplyr::bind_cols(
+          tmp_grid,
+          tibble::as_tibble(.x) |> stats::setNames(new_nms)
+        )
     )
   tibble::tibble(.pred = tmp_pred)
 }
@@ -163,7 +172,6 @@ multi_predict._mixo_pls <-
     }
 
     ## -------------------------------------------------------------------------
-
 
     if (is.null(num_comp)) {
       num_comp <- object$fit$sncomp

@@ -2,7 +2,8 @@
 
 For regression, let's use the Tecator data in the modeldata package:
 
-```{r, message=FALSE}
+```{r}
+#| message: false
 library(tidymodels)
 library(plsmod)
 tidymodels_prefer()
