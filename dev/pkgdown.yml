@@ -1,9 +1,9 @@
 pandoc: 3.1.11
-pkgdown: 2.1.1
+pkgdown: 2.1.2
 pkgdown_sha: ~
 articles:
   articles/plsmod: plsmod.html
-last_built: 2025-04-22T19:12Z
+last_built: 2025-04-29T17:21Z
 urls:
   reference: https://plsmod.tidymodels.org/reference
   article: https://plsmod.tidymodels.org/articles
