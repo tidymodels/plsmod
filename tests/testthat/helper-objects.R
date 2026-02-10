@@ -1,8 +1,7 @@
 suppressPackageStartupMessages(library(mixOmics))
 
 if (rlang::is_installed("modeldata")) {
-  data("penguins", package = "modeldata")
-  penguins <- na.omit(penguins)
+  penguins <- na.omit(modeldata::penguins)
 
   pen_for_test <- 1:10
   pen_y_tr <- penguins$species[-pen_for_test]
@@ -20,14 +19,10 @@ if (rlang::is_installed("modeldata")) {
 
   ###
 
-  data(meats, package = "modeldata")
-
   meats_for_test <- 1:10
-  meats_y_tr <- meats[-meats_for_test, c("water", "fat", "protein")]
-  meats_y_te <- meats[meats_for_test, c("water", "fat", "protein")]
+  meats_y_tr <- modeldata::meats[-meats_for_test, c("water", "fat", "protein")]
+  meats_y_te <- modeldata::meats[meats_for_test, c("water", "fat", "protein")]
 
-  meats_x_tr <- meats[-meats_for_test, 1:100]
-  meats_x_te <- meats[meats_for_test, 1:100]
+  meats_x_tr <- modeldata::meats[-meats_for_test, 1:100]
+  meats_x_te <- modeldata::meats[meats_for_test, 1:100]
 }
-
-print("yey")
