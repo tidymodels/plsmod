@@ -4,6 +4,11 @@
 
 - Transition from the magrittr pipe to the base R pipe.
 
+- Fixed a bug (exposed by the new version of the tune package) where
+  [`multi_predict()`](https://parsnip.tidymodels.org/reference/multi_predict.html)
+  was called with a single component value
+  ([\#47](https://github.com/tidymodels/plsmod/issues/47)).
+
 ## plsmod 1.0.0
 
 CRAN release: 2022-09-06

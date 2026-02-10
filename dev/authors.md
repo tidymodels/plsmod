@@ -14,13 +14,13 @@
 Source:
 [`DESCRIPTION`](https://github.com/tidymodels/plsmod/blob/main/DESCRIPTION)
 
-Kuhn M (2025). *plsmod: Model Wrappers for Projection Methods*. R
+Kuhn M (2026). *plsmod: Model Wrappers for Projection Methods*. R
 package version 1.0.0.9000, <https://plsmod.tidymodels.org>.
 
     @Manual{,
       title = {plsmod: Model Wrappers for Projection Methods},
       author = {Max Kuhn},
-      year = {2025},
+      year = {2026},
       note = {R package version 1.0.0.9000},
       url = {https://plsmod.tidymodels.org},
     }
