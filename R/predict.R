@@ -1,3 +1,8 @@
+# Dimensions that are produced by `predict.mixo_*pls()`:
+# dim 1: n: number of samples being predicted
+# dim 2: p: number of outcomes
+# dim 3: q: number of components
+
 # Post-processor for when only the largest value of ncomp is being used. This
 # works for regression predictions (uni- or multivariate)
 single_numeric_preds <- function(results, object) {
@@ -57,7 +62,6 @@ multi_numeric_preds <- function(object, new_data, comps = NULL) {
   tmp_grid <- tibble::tibble(num_comp = comps)
 
   tmp_pred <- tmp_pred[,, comps, drop = FALSE]
-
   if (p > 1) {
     nms <- dimnames(tmp_pred)[[2]]
     new_nms <- paste0(".pred_", nms)
@@ -65,6 +69,10 @@ multi_numeric_preds <- function(object, new_data, comps = NULL) {
   } else {
     new_nms <- ".pred"
     tmp_pred <- tmp_pred[, 1, ]
+    if (is.vector(tmp_pred)) {
+      # Dropped to vector when there is only one component
+      tmp_pred <- matrix(tmp_pred, ncol = 1)
+    }
     tmp_pred <- purrr::map(1:n, \(.x) data.frame(.pred = tmp_pred[.x, ]))
   }
 
@@ -73,11 +81,12 @@ multi_numeric_preds <- function(object, new_data, comps = NULL) {
   tmp_pred <-
     purrr::map(
       tmp_pred,
-      \(.x)
+      \(.x) {
         dplyr::bind_cols(
           tmp_grid,
           tibble::as_tibble(.x) |> stats::setNames(new_nms)
         )
+      }
     )
   tibble::tibble(.pred = tmp_pred)
 }
@@ -103,8 +112,9 @@ multi_class_preds <- function(object, new_data, comps = NULL) {
   tmp_pred <-
     purrr::map(
       tmp_pred,
-      \(.x)
+      \(.x) {
         tibble::tibble(num_comp = comps, .pred_class = factor(.x, levels = lvl))
+      }
     )
 
   tibble::tibble(.pred = tmp_pred)
@@ -134,11 +144,12 @@ multi_class_probs <- function(object, new_data, comps = NULL) {
   tmp_pred <-
     purrr::map(
       tmp_pred,
-      \(.x)
+      \(.x) {
         dplyr::bind_cols(
           tmp_grid,
           tibble::as_tibble(.x) |> stats::setNames(new_nms)
         )
+      }
     )
   tibble::tibble(.pred = tmp_pred)
 }

@@ -122,6 +122,19 @@ test_that("mixOmics univariate model fitting", {
     ignore_attr = TRUE
   )
 
+  # multi_predict with a single component
+  expect_no_error(
+    parsnip_pls_multi_pred_num_single <-
+      multi_predict(parsnip_pls_uni, as.data.frame(meats_x_te), num_comp = 1)
+  )
+  expect_equal(nrow(parsnip_pls_multi_pred_num_single), nrow(meats_x_te))
+  expect_equal(nrow(parsnip_pls_multi_pred_num_single$.pred[[1]]), 1)
+  expect_equal(
+    names(parsnip_pls_multi_pred_num_single$.pred[[1]]),
+    c("num_comp", ".pred"),
+    ignore_attr = TRUE
+  )
+
   mo_pls_pred_9 <- predict(uni_model, meats_x_te)$predict[9, , 1:2]
   mo_pls_pred_9 <- tibble::tibble(.pred = mo_pls_pred_9)
 

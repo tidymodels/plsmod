@@ -2,6 +2,8 @@
 
 * Transition from the magrittr pipe to the base R pipe.
 
+* Fixed a bug (exposed by the new version of the tune package) where `multi_predict()` was called with a single component value (#47).
+
 # plsmod 1.0.0
 
 * Small release to correct HTML tags for CRAN.
